@@ -1,0 +1,36 @@
+body {
+  background-color: darkgrey;
+}
+
+.bg {
+  height: min-content;
+  background-image: url('images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.button_box {
+  font-size: 100px;
+  height: 400px;
+  width: 800px;
+  transform: translate(4000px, -3000px);
+  background-color: darkgray;
+  display: inline-block;
+  margin: 50px;
+}
+
+div#red {
+  background-color: red;
+}
+
+div#white {
+  background-color: whitesmoke;
+}
+
+div#blue {
+  background-color: blue;
+}
+
+div#black{
+  background-color: black;
+}
