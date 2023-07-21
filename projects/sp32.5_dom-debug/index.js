@@ -1,4 +1,6 @@
+
 const colors = ["red", "blue", "green"]
+
 
 var addButton = document.getElementById("add")
 addButton.addEventListener("click", function(e){
@@ -8,11 +10,11 @@ addButton.addEventListener("click", function(e){
 
 function createDropDown(){
     const dropDown = document.createElement("select")
-    for (let i = 0; i < colors; i++){
-        const option = createElement("option") 
+    for (let i = 0; i < colors.length; i++){
+        var option = document.createElement("option") 
         option.innerHTML = colors[i]
-        option.value = colors[i]
-        dropDown.append(option)
+        option.text = colors[i]
+        dropDown.add(option)
     }
 
     dropDown.addEventListener("onchange", function(e){
