@@ -12,13 +12,15 @@ function createDropDown(){
     const dropDown = document.createElement("select")
     for (let i = 0; i < colors.length; i++){
         var option = document.createElement("option") 
-        option.innerHTML = colors[i]
-        option.text = colors[i]
-        dropDown.add(option)
+        option.textContent = colors[i]
+        option.value = colors[i]
+        dropDown.append(option)
     }
 
-    dropDown.addEventListener("onchange", function(e){
-        e.target.parent.backgroundColor = e.target.value
+    dropDown.addEventListener("change", function(e){
+        e.target.parentElement.style.backgroundColor = e.target.value
+        console.log(e.target.value)
+
     })
     return dropDown
 }
@@ -30,8 +32,12 @@ function createSubItem(e){
     const dropDown = createDropDown()
     subItem.appendChild(dropDown)
     subItem.setAttribute("class", "subItem")
+    
     return subItem
     
 }
 
-
+// var changeBackground = document.getElementsByClassName("subItem")
+// changeBackground.addEventListener("onchange", function(e){
+//     e.target.parent.backgroundColor = e.target.value
+// })
