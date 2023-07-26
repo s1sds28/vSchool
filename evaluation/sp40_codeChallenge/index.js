@@ -26,20 +26,20 @@ const book1 = new Book("TheGreat Gatsby", "F. Scott Fitzgerald", 1925);
 const book2 = new Book("To kill a Mockingbird", "Harper Lee", 1960);
 
 
-// console.log(book1.getDetails())
-// console.log(book2.getDetails())
+console.log(book1.getDetails())
+console.log(book2.getDetails())
 
 /**Write a function called **`removeDuplicates`** that takes an array of numbers as input and returns a new
 *array with duplicate values removed.  Use the below code to test your solution.
 */
 
-function removeDuplicates(listWithDuplicates) {
+function removeDuplicates(listDuplicates) {
     let listNoDuplicates = []
-    for(let i = 0; i < listWithDuplicates.length; i++){
-        if(listNoDuplicates.includes(listWithDuplicates[i])){
+    for(let i = 0; i < listDuplicates.length; i++){
+        if(listNoDuplicates.includes(listDuplicates[i])){
             continue
         } else {
-            listNoDuplicates.push(listWithDuplicates[i])
+            listNoDuplicates.push(listDuplicates[i])
         }
     }
     return listNoDuplicates;

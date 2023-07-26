@@ -1,0 +1,24 @@
+#square {
+    height: 100px;
+    width: 100px;
+    background-color: lightgrey;
+    left: 5%;
+    position: absolute;
+}
+
+#explanationBlue {
+    color: blue;
+}
+
+#explanationRed {
+    color: red;
+}
+#explanationYellow {
+    color: yellow;
+}
+#explanationGreen {
+    color: green;
+}
+#explanationOragne {
+    color: orange;
+}
