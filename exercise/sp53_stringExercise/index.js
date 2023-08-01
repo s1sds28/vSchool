@@ -32,8 +32,10 @@ function capitalizeAndLowercase(text){
 
 // Write a function that takes a string as a parameter and capitalizes any character that follows a space.
 function capitalize(text){
+    // Define variables
     text = text.split(" ")
     var result = []
+    // Loop over text, push first letter capitalized and the reminder lower case
     for(let i = 0; i < text.length; i++){
         firstLetter = text[i].slice(0,1)
         remainder = text[i].slice(1)
