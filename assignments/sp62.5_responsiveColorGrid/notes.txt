@@ -1,0 +1,46 @@
+*/
+
+    /* .thirdRowClass {
+        display: block;
+        position: relative;
+        
+    }
+    .thirdRowItemClass {
+        background-color: #85cfd8;
+        color: #85cfd8;
+        /* position: absolute;
+        padding: 0%;
+        border: 0;
+        margin: 5px 5px 5px 5px;
+    }
+
+    
+    #forthRowId {
+        display: flex;
+    }
+    
+    #forthRowGreen{
+        background-color: #8dc63f;
+        color: #8dc63f;
+        width: 75%;
+    
+        padding: 0%;
+        border: 0;
+        margin: 5px 5px 5px 5px;
+    
+    }   
+    
+    #forthRowOrange {
+        background-color: #e76e34;
+        color: #e76e34;
+        width: 25%;
+    
+        padding: 0%;
+        border: 0;
+        margin: 5px 5px 5px 5px;
+    
+    }
+
+    
+}
+ */
