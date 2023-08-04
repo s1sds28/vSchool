@@ -1,5 +1,5 @@
 // Add header text and headerclass
-let headerText = "JavaScript Make This!!"
+let headerText = "JavaScript Made This!!"
 document.getElementById("header").textContent = headerText
 document.getElementById("header").classList.add("header");
 
@@ -9,6 +9,12 @@ headerName.innerHTML += "<p><span class='name'>Steven</span> wrote the JavaScrip
 headerName.id = "headerName"
 headerName.style.fontSize = "small"
 document.getElementById("header").appendChild(headerName);
+
+//  const p = document.createElement("p")
+// // const span1 = document.createELement("span")
+// headerName.appendChild(p)
+// p.append(span1)
+// span1.textContent = "Steven"
 
 // Change the messages on left
 var messagesLeft = document.getElementsByClassName("message left");
