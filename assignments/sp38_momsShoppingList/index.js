@@ -26,7 +26,8 @@ form.addEventListener("submit", (event) => {
     deleteButton = document.createElement("button")
     deleteButton.textContent = "x"
     deleteButton.addEventListener("click", (event) => {
-        newLi.parentNode.removeChild(newLi)
+        // newLi.parentNode.removeChild(newLi)
+        newLi.remove()
     })
     newLi.appendChild(deleteButton)
 
