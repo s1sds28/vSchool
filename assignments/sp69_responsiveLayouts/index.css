@@ -1,0 +1,140 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    height: 50px;
+
+    color: white;
+
+}
+
+@media only screen and (max-width: 400px) {
+
+    #grid-container {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: repeat(6, 1fr);
+
+    }
+    #header {
+        background-color: gray;
+        color: white;       
+    }
+
+    #sidebar {
+        background-color: rgb(77, 75, 75);
+    }
+
+    #content {
+        background-color: rgb(77, 75, 75);
+        height: 25vh;
+
+    }
+
+    #sidebar2 {
+        background-color: gray;
+        grid-row: 5 / 6;
+    }
+
+    #footer {
+        position: absolute;
+        bottom: 0px;
+        width: 95%;
+        height: 2.5rem;
+        background-color: gray;
+        grid-column: 1 / -1;
+    }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 400px) {
+    #grid-container {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(5, 1fr);
+        margin: 0px;
+        padding: 0px;
+
+    }
+    #header {
+        grid-column: 1 / 6;
+
+        background-color: gray;
+        color: white;       
+    }
+
+    #sidebar {
+        background-color: rgb(77, 75, 75);
+        height: 100px;
+        grid-column: 1/2;
+    }
+
+    #content {
+        background-color: rgb(77, 75, 75);
+        height: 100px;
+        margin-top: 0px;
+        grid-column: 2/6;
+        grid-row: 2 /3;
+
+    }
+
+    #sidebar2 {
+        background-color: gray;
+        grid-column: 1/6;
+    }
+
+    #footer {
+        position: absolute;
+        bottom: 0px;
+        width: 95%;
+        height: 2.5rem;
+        background-color: gray;
+        grid-column: 1 / -1;
+    }
+
+}
+
+@media only screen and (min-width: 600px) {
+    #grid-container {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(100px, auto-fit, 100px);
+        margin-top: 0px;
+        padding: 0px;
+
+    }
+    #header {
+        grid-column: 1 / 4;
+
+        background-color: gray;
+        color: white;       
+    }
+
+    #sidebar {
+        background-color: rgb(77, 75, 75);
+        height: 100px;
+        grid-column: 1/2;
+    }
+
+    #content {
+        background-color: rgb(77, 75, 75);
+        height: 100px;
+        grid-column: 2/3;
+        margin-top: 0;
+
+    }
+
+    #sidebar2 {
+        background-color: gray;
+        grid-column: 3 / 4;
+        height: 100px;
+
+    }
+
+    #footer {
+        position: absolute;
+        bottom: 0px;
+        width: 98%;
+        height: 2.5rem;
+        background-color: gray;
+        grid-column: 1 / -1;
+    }
+}
