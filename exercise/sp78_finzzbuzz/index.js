@@ -5,8 +5,6 @@
  * else if divisible by 5 log Buzz
  * else log number
  */
-
-
 // define variable for optional part
 let optional = {
     fizzbuzz: 0,
@@ -18,6 +16,7 @@ let optional = {
  * For each multiple of 3 returns "Fizz"
  * For each multiple of 5 returns "Buzz"
  * For numbers which are multiples of both 3 and 5 returns "FizzBuzz"
+ * Add 1 to optional object for optional part
  */
 const FizzBuzz = i => {
     const moduloThree = i % 3
@@ -38,7 +37,6 @@ const FizzBuzz = i => {
 // For numbers 1 through 100 prints "Fizz", "Buzz", "FizzBuzz", or Number
 for(let i = 1; i < 101; i++) {
     console.log(FizzBuzz(i))
-    
 } 
 
 // log the optional part
