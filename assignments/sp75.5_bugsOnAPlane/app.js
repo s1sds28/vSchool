@@ -1,34 +1,40 @@
-// var form = document.getElementByID("arline-form");
-// var submit = document.getElementByID(submit);
-// var query = document.querySelector;
-
 const form = document["airline-form"]
+form.addEventListener("submit", function(event) {
+    // Save inputs
+    const firstName = form["first-name"].value
+    const lastName = form["last-name"].value
+    const age = form.age.value
+    const gender = form.gender.value
+    const location = form["travel-location"].value
+    const diet = dietCheck()
 
-function formAlert(Event) {
-    Event.preventDefault()
-    // var firstName = form.elements["firstName"].value;
-    // var lastName = form.elements["lastName"].value;
-    // var age = form.elements["age"].value;
-    // var gender = form.elements["gender"].value;
-    // var location = form.elements["travel-location"].value;
-    // var diet = {};
-    // if (form.elements['vegan'].checked) {
-    //     var diet.pop(document.getElementById("vegan").value);
-    // }
-    // if (form.elements['gluten'].checked) {
-    //     diet.push(document.getElementById('gluten').value);
-    // }
-    // if (form.elements['paleo'].checked) {
-    //     diet.push(document.getElementById('paleo').value);
-    // }
+    // Clear inputs
+    form["first-name"].value = ""
+    form["last-name"].value =""
+    form.age.value = ""
+    form.gender.value = ""
+    form["travel-location"].value = ""
+    form.vegan.value = false
+    form.gluten.value = false
+    form.paleo.value = false
 
+    // Create alert
+    alert("First Name: " + firstName + 
+        "\nLast Name: " + lastName + 
+        "\nAge: " + age +
+        "\nGender: " + gender +
+        "\nlocation: " + location +
+        "\nDiet: " + diet +
+        "\nAwesome, now if you die, it won't be an accident....")
+});
 
-    // alert("First Name: " + firstName + "\nLast Name: " + lastName + "\nAge: " + age + "\nGender: " + gender + "\nTravel Location: " + location + "\nDiet: " + diet + "\nAwesome, now if you die, it won't be an accident..");
-
-    //Test alert
-    var okay = "okay"
-    alert(okay)
+// Find all diets checked
+function dietCheck() {
+    dietArr = []
+    for(let i = 0; i < form.diet.length; i++) {
+        if(form.diet[i].checked) {
+            dietArr.push(" " + form.diet[i].value)
+        }
+    } 
+    return dietArr
 }
-
-
-form.addEventListener("submit", formAlert(Event));
