@@ -1,0 +1,42 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+}
+
+nav {
+    background-color: gray;
+}
+.navbar li {
+    display: inline-block;
+    font-size: 50px;
+    padding: 25px;
+}
+
+.welcome {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-decoration: underline;
+    color: purple;
+    font-size: 15vh;
+}
+
+.code-photo {
+    max-width: 500px;
+    float: center;
+}
+
+.list p {
+    text-align: left;
+    text-decoration: underline;
+}
+
+.list {
+    text-align: left;
+    list-style-position: inside
+}
+
+.fake-link {
+    text-decoration: underline;
+    cursor: pointer;
+}
