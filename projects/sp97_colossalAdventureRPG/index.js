@@ -35,83 +35,95 @@ let arrEnemies = [enemy1, enemy2, enemy3];
 // Game variables
 let enemy = NaN;
 let alive = true;
+let playAgainQuestion = true;
 
 // Display the rules
 console.log("You have to press \"w\" to walk and answer the questions correctly OR YOU DIE...Press \"p\" to print the player's name, HP, and inventory items ")
 
 //print the players name, HP, and each item in their inventory
 //TODO: put this in another loop to store the time to win and ask to play again
+while(playAgainQuestion) {
+    // Use a while loop to control this flow (of walking and fighting)
+    while(alive){
+        // Player must press w to walk if not die
+        let isWalking = readline.question("press \"w\" to walk: \n")
+        if(isWalking !== "w" && isWalking !== "p") {
+            alive = false;
+            break
+        }
 
-// Use a while loop to control this flow (of walking and fighting)
-while(alive){
-    // Player must press w to walk if not die
-    let isWalking = readline.question("press \"w\" to walk: \n")
-    if(isWalking !== "w" && isWalking !== "p") {
-        alive = false;
-        break
-    }
+        if(isWalking == "p") {
+            console.log(`Name: ${playerName}\nHP: ${hero.healthPoints}\nInventory: ${playerInventory}\n`)
+            continue;
+        }
 
-    if(isWalking == "p") {
-        console.log(`Name: ${playerName}\nHP: ${hero.healthPoints}\nInventory: ${playerInventory}\n`)
-        continue;
-    }
+        // One in three chance to get attacked
+        if(chanceOneIn(3)) {
+            // If a wild enemy appears 
+            console.log("A wild enemy appears!!")
 
-    // One in three chance to get attacked
-    if(chanceOneIn(3)) {
-        // If a wild enemy appears 
-        console.log("A wild enemy appears!!")
+            // The enemy is random (can be chosen out of a minimum of 3 different enemy names)
+            enemy = randomAttacker()
 
-        // The enemy is random (can be chosen out of a minimum of 3 different enemy names)
-        enemy = randomAttacker()
+            // The user can decide to attack or run
+            const runOrAttack = pickRunOrAttack()
 
-        // The user can decide to attack or run
-        const runOrAttack = pickRunOrAttack()
+            // After the player attacks or runs the enemy attacks back for a random damage amount -> Need to apply the damage now, before hero escapes
+            randomDamageAmountToHero(5, 25)
 
-        // After the player attacks or runs the enemy attacks back for a random damage amount -> Need to apply the damage now, before hero escapes
-        randomDamageAmountToHero(5, 25)
-
-        // If attacking, a random amount of damage will be dealt between a min and max
-        if(runOrAttack === "attack") {
-            console.log(`${hero.name} and ${enemy.name} are going to fight!`)
-            randomDamageAmountToEnemy(50, 100)
-        }   else if(runOrAttack === "run") {
-                if(chanceOneIn(2) === true) {
-                    console.log("The Hero got caught!")
-                } else {
-                    console.log(`You escaped, but ${enemy.name} is still out there! and you got hit on the way out! The hero has ${hero.healthPoints} health points`)
-                    // Continue the loop walking
-                    continue
+            // If attacking, a random amount of damage will be dealt between a min and max
+            if(runOrAttack === "attack") {
+                console.log(`${hero.name} and ${enemy.name} are going to fight!`)
+                randomDamageAmountToEnemy(50, 100)
+            }   else if(runOrAttack === "run") {
+                    if(chanceOneIn(2) === true) {
+                        console.log("The Hero got caught!")
+                    } else {
+                        console.log(`You escaped, but ${enemy.name} is still out there! and you got hit on the way out! The hero has ${hero.healthPoints} health points`)
+                        // Continue the loop walking
+                        continue
+                    }
                 }
+            // else catch all: player dies
+            else {
+                break;
             }
-        // else catch all: player dies
-        else {
+
+            // The player and enemy will attack each other in a loop until one of them passes out or dies.
+            displayHealth()
+            let winOrLose = fightLoop()
+        }
+
+        if(hero.healthPoints <= 0){
             break;
         }
 
-        // The player and enemy will attack each other in a loop until one of them passes out or dies.
-        displayHealth()
-        let winOrLose = fightLoop()
+        // Game play + health points for walking
+        console.log("You found some healthPoints")
+        hero.healthPoints += 10
+
+        // Winner when Hero kills all enemies:
+        if(arrEnemies <= 0) {
+            const arsenal = playerInventory.join(", ")
+            console.log("You're the Boss and have all the weapons." + `\nYour arsenal includes ${arsenal}!`)
+            break;
+        }
+        
+
+    } 
+    console.log("Game Over")
+
+    let playAgain = readline.question("Press \"y\" to play again")
+    if(playAgain === "y"){
+        alive = true;
+        arrEnemies = [enemy1, enemy2, enemy3];
+
+    } else {
+        playAgainQuestion = false;
+        break
     }
 
-    if(hero.healthPoints <= 0){
-        break;
-    }
-
-    // Game play + health points for walking
-    console.log("You found some healthPoints")
-    hero.healthPoints += 10
-
-    // Winner when Hero kills all enemies:
-    if(arrEnemies <= 0) {
-        const arsenal = playerInventory.join(", ")
-        console.log("You're the Boss and have all the weapons." + `\nYour arsenal includes ${arsenal}!`)
-        break;
-    }
-    
-
-} 
-console.log("Game Over")
-
+}
 //example: chanceOneIn(4) returns true 25% of the time
 function chanceOneIn(outOfNumber){
     return Math.floor(Math.random() * outOfNumber) === 0;
