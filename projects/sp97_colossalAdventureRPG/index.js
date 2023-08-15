@@ -1,4 +1,7 @@
 // RPG 1. Story point 82
+
+//limit 
+
 const readline = require("readline-sync");
 
 // Console must ask for the player's name and store it 
@@ -40,18 +43,18 @@ let playAgainQuestion = true;
 // Display the rules
 console.log("You have to press \"w\" to walk and answer the questions correctly OR YOU DIE...Press \"p\" to print the player's name, HP, and inventory items ")
 
-//print the players name, HP, and each item in their inventory
-//TODO: put this in another loop to store the time to win and ask to play again
+
+//Put this in a loop to ask them to play again.
 while(playAgainQuestion) {
     // Use a while loop to control this flow (of walking and fighting)
     while(alive){
         // Player must press w to walk if not die
-        let isWalking = readline.question("press \"w\" to walk: \n")
+        let isWalking = readline.question("press \"w\" to walk: \n", {limit: ["w", "p"]})
         if(isWalking !== "w" && isWalking !== "p") {
             alive = false;
             break
         }
-
+        //print the players name, HP, and each item in their inventory
         if(isWalking == "p") {
             console.log(`Name: ${playerName}\nHP: ${hero.healthPoints}\nInventory: ${playerInventory}\n`)
             continue;
@@ -79,7 +82,7 @@ while(playAgainQuestion) {
                     if(chanceOneIn(2) === true) {
                         console.log("The Hero got caught!")
                     } else {
-                        console.log(`You escaped, but ${enemy.name} is still out there! and you got hit on the way out! The hero has ${hero.healthPoints} health points`)
+                        console.log(`The Hero escaped, but ${enemy.name} is still out there! and the Hero got hit on the way out! The Hero has ${hero.healthPoints} health points`)
                         // Continue the loop walking
                         continue
                     }
@@ -92,10 +95,12 @@ while(playAgainQuestion) {
             // The player and enemy will attack each other in a loop until one of them passes out or dies.
             displayHealth()
             let winOrLose = fightLoop()
-        }
 
-        if(hero.healthPoints <= 0){
-            break;
+            if(winOrLose === false){
+                alive = false;
+                console.log("You Died")
+                break;
+            }
         }
 
         // Game play + health points for walking
@@ -112,11 +117,12 @@ while(playAgainQuestion) {
 
     } 
     console.log("Game Over")
-
-    let playAgain = readline.question("Press \"y\" to play again")
+    
+    let playAgain = readline.question("Press \"y\" to play again: ", {limit: ["y", "n"]})
     if(playAgain === "y"){
+        // reset variables to play again
         alive = true;
-        arrEnemies = [enemy1, enemy2, enemy3];
+        resetGameVars()
 
     } else {
         playAgainQuestion = false;
@@ -136,7 +142,7 @@ function randomAttacker() {
 }
 
 function pickRunOrAttack() {
-    const choiceRunOrAttack = readline.question("You must pick \"r\" to Run OR \"a\" to Attack. Choose Now [r/a]: ")
+    let choiceRunOrAttack = readline.question("You must pick \"r\" to Run OR \"a\" to Attack. Choose Now [r/a]: ", {limit: ["r", "a"]})
     if(choiceRunOrAttack === "r") {
         console.log("The Hero is going to run!")
         return "run"
@@ -146,6 +152,18 @@ function pickRunOrAttack() {
     } else {
         return false;
     }
+}
+
+function resetGameVars() {
+    console.log("Reset Game Vars")
+    hero.inventory = ["hands"];
+    arrEnemies = [enemy1, enemy2, enemy3];
+    hero.healthPoints = 100;
+    enemy1.healthPoints = 100;
+    enemy2.healthPoints = 100;
+    enemy3.healthPoints = 100;
+
+
 }
 
 function displayHealth() { 
@@ -206,8 +224,6 @@ function fightLoop() {
         hero.inventory.push(enemy.inventory[0])
         hero.healthPoints += 100
         // Remove dead enemy from arrEnemies array
-        // arrEnemies.splice(arrEnemies.findIndex(item => item.field === enemy.name), 1)
-        // arrEnemies.shift(arrEnemies.findIndex(Character => Character.name === enemy.name))
         let indexArrEnemy = arrEnemies.findIndex(obj => obj.name === enemy.name)
         arrEnemies.splice(indexArrEnemy, 1)
         console.log(`The Hero Wins! and took ${enemy.name}'s ${enemy.inventory}`)
