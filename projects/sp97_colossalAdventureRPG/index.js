@@ -1,5 +1,4 @@
 // RPG 1. Story point 82
-
 const readline = require("readline-sync");
 
 // Console must ask for the player's name and store it 
@@ -19,7 +18,6 @@ class Character{
     playerInventory() {
         console.log(`Inventory: ${this.inventory}`)
     }
-    
 }
 
 // Define global variable for player's inventory
@@ -43,14 +41,11 @@ console.log("You have to press \"w\" to walk and answer the questions correctly 
 
 //Put this in a loop to ask them to play again.
 while(playAgainQuestion) {
+    resetGameVars()
     // Use a while loop to control this flow (of walking and fighting)
     while(alive){
         // Player must press w to walk if not die
         let isWalking = readline.question("press \"w\" to walk: \n", {limit: ["w", "p"]})
-        if(isWalking !== "w" && isWalking !== "p") {
-            alive = false;
-            break
-        }
 
         //print the players name, HP, and each item in their inventory
         if(isWalking == "p") {
@@ -107,7 +102,7 @@ while(playAgainQuestion) {
 
         // Winner when Hero kills all enemies:
         if(arrEnemies <= 0) {
-            const arsenal = playerInventory.join(", ")
+            let arsenal = hero.inventory.join(", ")
             console.log("You're the Boss and have all the weapons." + `\nYour arsenal includes ${arsenal}!`)
             break;
         }
@@ -117,7 +112,6 @@ while(playAgainQuestion) {
     if(playAgain === "y"){
         // reset variables to play again
         alive = true;
-        resetGameVars()
     } else {
         playAgainQuestion = false;
         break
@@ -150,7 +144,8 @@ function pickRunOrAttack() {
 }
 
 function resetGameVars() {
-    hero.inventory = ["hands"];
+    playerInventory = ["hands"]
+    hero.inventory = playerInventory
     arrEnemies = [enemy1, enemy2, enemy3];
     hero.healthPoints = 100;
     enemy1.healthPoints = 100;
