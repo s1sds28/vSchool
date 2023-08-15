@@ -1,7 +1,5 @@
 // RPG 1. Story point 82
 
-//limit 
-
 const readline = require("readline-sync");
 
 // Console must ask for the player's name and store it 
@@ -43,7 +41,6 @@ let playAgainQuestion = true;
 // Display the rules
 console.log("You have to press \"w\" to walk and answer the questions correctly OR YOU DIE...Press \"p\" to print the player's name, HP, and inventory items ")
 
-
 //Put this in a loop to ask them to play again.
 while(playAgainQuestion) {
     // Use a while loop to control this flow (of walking and fighting)
@@ -54,6 +51,7 @@ while(playAgainQuestion) {
             alive = false;
             break
         }
+
         //print the players name, HP, and each item in their inventory
         if(isWalking == "p") {
             console.log(`Name: ${playerName}\nHP: ${hero.healthPoints}\nInventory: ${playerInventory}\n`)
@@ -104,7 +102,7 @@ while(playAgainQuestion) {
         }
 
         // Game play + health points for walking
-        console.log("You found some healthPoints")
+        console.log("You got health points for walking!")
         hero.healthPoints += 10
 
         // Winner when Hero kills all enemies:
@@ -113,27 +111,24 @@ while(playAgainQuestion) {
             console.log("You're the Boss and have all the weapons." + `\nYour arsenal includes ${arsenal}!`)
             break;
         }
-        
-
     } 
     console.log("Game Over")
-    
     let playAgain = readline.question("Press \"y\" to play again: ", {limit: ["y", "n"]})
     if(playAgain === "y"){
         // reset variables to play again
         alive = true;
         resetGameVars()
-
     } else {
         playAgainQuestion = false;
         break
     }
-
 }
+
 //example: chanceOneIn(4) returns true 25% of the time
 function chanceOneIn(outOfNumber){
     return Math.floor(Math.random() * outOfNumber) === 0;
 }
+
 // returns an attacker at random at tells you who it is
 function randomAttacker() {
     const attacker = arrEnemies[(Math.floor(Math.random() * arrEnemies.length))]
@@ -155,15 +150,12 @@ function pickRunOrAttack() {
 }
 
 function resetGameVars() {
-    console.log("Reset Game Vars")
     hero.inventory = ["hands"];
     arrEnemies = [enemy1, enemy2, enemy3];
     hero.healthPoints = 100;
     enemy1.healthPoints = 100;
     enemy2.healthPoints = 100;
     enemy3.healthPoints = 100;
-
-
 }
 
 function displayHealth() { 
