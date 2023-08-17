@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    min-width: 200px;
+    background-color: hsl(0, 0%, 98%);
+    color: #333;
+    font: 100% / normal sans-serif;
+  }
+
+  nav {
+    background-color: gray;
+    display: inline-flex;
+    min-height: 25px;
+    min-width: 100px;
+    top: 0;
+    height: 5%;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    vertical-align: center;
+    z-index: 999;
+    border-bottom: 1px solid black
+  }
+
+  nav > h1 {
+    vertical-align: center;
+    padding-top: 0px;
+  }
+
+@media only screen and (min-width: 600px){
+  body {
+    margin: 0;
+    min-width: 200px;
+    background-color: hsl(0, 0%, 98%);
+    color: #333;
+    font: 100% / normal sans-serif;
+  }
+
+  nav {
+    background-color: gray;
+    display: inline-flex;
+    min-height: 25px;
+    min-width: 100px;
+    top: 0;
+    height: 5%;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    vertical-align: center;
+    z-index: 999;
+    border-bottom: 1px solid black
+  }
+
+  nav > h1 {
+    vertical-align: center;
+    padding-top: 0px;
+  }
+
+  main {
+    margin: 0 auto;
+    padding: 5rem 0;
+    width: 90%;
+    max-width: 60rem;
+  }
+
+  form {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: hsl(0, 0%, 100%);
+    border: 4px solid hsl(0, 0%, 90%);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .full-width {
+    grid-column: span 2;
+  }
+
+  .baddie {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: hsl(0, 0%, 100%);
+    border: 4px solid hsl(0, 0%, 90%);
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+  }
+
+  .baddiePic {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: lightgray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+    
+@media only screen and (max-width: 600px){
+
+  main {
+    margin: 0px;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  form { 
+    padding: 2rem;
+    background-color: hsl(0, 0%, 100%);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .baddie {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: hsl(0, 0%, 100%);
+    border: 4px solid hsl(0, 0%, 90%);
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    gap: 2rem;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .baddiePic {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .input {
+    max-width: 100px;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: lightgray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <span>Mario Pest Control</span>
+    </nav>
+    <main>
+        <form name="form">
+            <div class="baddie">
+                <div>
+                    <img class="baddiePic" src="images/Goomba.png">
+                </div>
+                <div>
+                    <p>Goombas 5 Coins Each</p>
+                </div>
+                <div>
+                    <input class="input" type="number" name="goombas" placeholder="goombas" id="goombas">
+                </div>
+            </div>
+            <div class="baddie">
+                <div>
+                    <img class="baddiePic" src="images/Bob-omb.png">
+                </div>
+                <div>
+                    <p>Bob-ombs 7 Coins Each</p>
+                </div>
+                <div>
+                    <input class="input" type="number" name="bobomb" placeholder="Bob-ombs">
+                </div>
+            </div>
+            <div class="baddie">
+                <div>
+                    <img class="baddiePic" src="images/Cheep-Cheep.png">
+                </div>
+                <div>
+                    <p>Cheep Cheeps 11 Coins Each</p>
+                </div>
+                <div>
+                    <input class="input" type="number" name="cheepCheep" placeholder="Cheep-cheeps">
+                </div>
+            </div>
+            <div class="baddie">
+                <div>
+                    <button class="btn" id="submit">Submit</button>
+                    <button class="btn" id="reset">Reset</button>
+                </div>
+                <div>
+                    <p>Coins:</p>
+                </div>
+                <div>
+                    <p id="totalCoins"></p>
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div id="email">
+            <p>email</p>
+        </div>
+        <div>
+            <p>website</p>
+        </div>
+        <div>
+            <p>address</p>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
