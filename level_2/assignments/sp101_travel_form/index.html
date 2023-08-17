@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Travel form</title>
+</head>
+<body>
+    <main>
+        <h1>Travel Form</h1>
+        <form name="travelForm">
+            <input name="firstName" placeholder="First Name">
+            <input name="lastName" placeholder="Last Name">
+            <input name="age" type="number" placeholder="age">
+            <div>
+                <label for="male">Male</label>
+                <input name="gender" type="radio" value="male" id="male">
+                <label for="female">Female</label>
+                <input name="gender" type="radio" value="female" id="female">
+            </div>
+            <label for="location">Location:</label>
+            <select name="location">
+                <option value="Beach">Beach</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Desert">Desert</option>
+            </select>
+            <div>
+                <div>Diet:</div>
+                <span>
+                    <label for="vegetarian">Vegetarian</label>
+                    <input type="checkbox" name="diet" value="vegetarian" id="vegetarian">
+                </span>
+                <span>
+                    <label for="kosher">Kosher</label>
+                    <input type="checkbox" name="diet" value="kosher" id="kosher">
+                </span>
+                <span>
+                    <label for="carnivore">Carnivore</label>
+                    <input type="checkbox" name="diet" value="carnivore" id="carnivore">
+                </span>
+            </div>
+            <button>Submit</button>
+        </form>
+    </main>
+    <script src="index.js"></script> 
+</body>
+</html>
