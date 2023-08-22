@@ -51,7 +51,9 @@ clicker.addEventListener("click", function() {
 });
 
 clearAll.addEventListener("click", function() {
+    // Local Storage 
     localStorage.setItem("localStorage", JSON.stringify([]))
+    // Session Storage
     sessionStorage.setItem("sessionStorage", JSON.stringify([]))
     location.reload()
 });
