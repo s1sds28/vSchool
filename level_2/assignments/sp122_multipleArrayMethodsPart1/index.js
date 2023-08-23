@@ -1,16 +1,17 @@
-// Returns a list of everyone older than 18, which is
-// Sorted alphabetically by last name, and where
-// Each name and age is embedded in a string that looks like an HTML `<li>` element.
-
+/**
+ * Returns a list of everyone older than 18, which is
+ * Sorted alphabetically by last name, and where
+ * Each name and age is embedded in a string that looks like an HTML `<li>` element.
+ */
 
 function sortedOfAge(arr){
-    // Returns a list of everyone older than 18
+    // adults is an array of everyone older than 18
     let adults = arr.filter(person => person.age > 18)
    
     // Sorted alphabetically by last name
     adults.sort((a, b) => a.lastName.localeCompare(b.lastName));
 
-    // each name and age is embedded in a string that looks like an HTML <li> element
+    // Each name and age is embedded in a string that looks like an HTML <li> element
     return adults.map(person => `<li>${person.firstName} ${person.lastName} is ${person.age}</li>`)
 }   
 
