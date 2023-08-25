@@ -1,0 +1,86 @@
+.explanation {
+    margin-left: 15px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+#text-blue {
+    /*No styling required*/
+}
+
+#text-red {
+    transition-property: background-color;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in;
+    transition-delay: 100ms;
+}
+
+#text-yellow {
+    transition-property: background-color;
+    transition-duration: 1000ms;
+    transition-timing-function: ease-in;
+    transition-delay: 1000ms;
+
+}
+
+#text-green {
+    transition-property: background-color font;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    transition-delay: 1s;
+}
+
+#text-orange {
+    height: 100%x;
+    width: 100%;
+    transition-property: background-color;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    transition-delay: 1s;
+    margin-top: 0px;
+    padding-top: 0px;
+    
+}
+
+#orange-box {
+    height: 25px;
+    border: 5px solid black;
+    background-color: white;
+    margin: 5px;
+
+}
+
+
+.text-blue:hover {
+    background-color: blue;
+    text-align: center;
+    
+}
+
+.text-blue:hover::after{
+    opacity:1;
+}
+
+
+.text-red:hover {
+    background-color: red;
+    border: 5px solid black;
+    border-width: 10px;
+    border-radius: 5px;
+}
+
+.text-yellow:hover {
+    background-color: yellow;
+    border: 10px solid rgb(119, 119, 0);
+    margin: 10px
+}
+
+.text-green:hover {
+    background-color: green;
+    color: white;
+}
+
+.text-orange:hover {
+    color: orange;
+}
+
+
