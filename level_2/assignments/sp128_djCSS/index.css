@@ -3,10 +3,6 @@
     font-family:'Courier New', Courier, monospace;
 }
 
-#text-blue {
-    /*No styling required*/
-}
-
 #text-red {
     transition-property: background-color;
     transition-duration: 100ms;
