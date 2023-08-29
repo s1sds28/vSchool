@@ -64,19 +64,19 @@
     }
 
     #box-4 {
-        grid-row: 7 / 9 ;
+        grid-row: 7 / 8 ;
         grid-column: 1 / 3;
-        margin-bottom: 15em;
-        position: absolute;
+        position: relative;
         background-color: #e5ede8;
         display: flex; /* Use Flexbox for vertical centering */
         flex-direction: row; /* Arrange items vertically */
         justify-content: space-around; /* Vertically center items */
-        align-items: stretch; /* Stretch items to fill container horizontally */
         min-height: 25em; /* Allow the container to shrink if needed */
+        height: 50em;
     }
 
     .box-4-ul {
+        padding-top: 5em;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -142,8 +142,8 @@
 
     #box-6 {
         grid-column: 1 / 3;
-        grid-row: 9 / 11;
-        position: absolute;
+        grid-row: 10 / 11;
+        position: relative;
         background-image: url('images/woods.png'); /* Replace with the actual path to your image */
         background-repeat: no-repeat;
         background-size: cover;
@@ -151,7 +151,6 @@
         display: flex; /* Use Flexbox for vertical centering */
         flex-direction: row; /* Arrange items vertically */
         justify-content: space-around; /* Vertically center items */
-        align-items: stretch; /* Stretch items to fill container horizontally */
         min-height: 25em;
     }
     
@@ -183,6 +182,7 @@
 
     .box-6-li-a,
     .box-6-ul-li {
+        margin: 0px;
         text-transform: uppercase;
         color: gray;
         text-decoration: none;
@@ -334,7 +334,7 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        font-size: 2em;
+        font-size: 1.5em;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -489,5 +489,3 @@
         border-radius: 50%;
     }
 }
-
-
