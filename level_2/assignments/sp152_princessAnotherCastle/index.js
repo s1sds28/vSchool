@@ -8,6 +8,7 @@ class Player{
         this.status = status
         this.hasStar = hasStar
     }
+
     // What a player can do
     setName(name){
         if(name === "Mario" || name === "Luigi"){
@@ -57,7 +58,6 @@ const player = new Player("player", 0, 3, false)
 // Set the player's name ... defaults to Mario
 player.setName(name)
 
-
 // The game function to be called on an interval
 const playGame = () => {
     // Pick a random number to call a function
@@ -73,17 +73,16 @@ const playGame = () => {
     player[action]();
     // Print the player's status
     player.print()
-    if(player.status <= 0){
+    if(player.status <= 0) {
         console.log("You Died")
         clearInterval(intervalId)
         process.exit()
-    } else if(player.totalCoins > 10){
+    } else if(player.totalCoins > 10) {
         console.log(`You win!`)
         process.exit()
     }
 }
 
-  
 const intervalId = setInterval(playGame, 1000); // Execute myFunction every 1000 milliseconds (1 second)
 
 // To clear the interval after a certain time
