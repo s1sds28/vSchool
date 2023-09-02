@@ -1,0 +1,32 @@
+For problems #1 and #2, reference the Star Wars API
+https://swapi.dev/documentation
+
+Use Postman to GET a list of planets.
+https://swapi.dev/api/planets
+
+Use Postman to GET a single person object.
+https://swapi.dev/api/people/1
+
+For problems below, use the https://api.vschool.io/[your_name]/todo endpoint.
+
+post 3 new todos:
+
+https://api.vschool.io/steven/todo/
+
+Get one
+https://api.vschool.io/steven/todo/64f3637f78fe452c114a1c67
+
+delete one 
+
+https://api.vschool.io/steven/todo/64f3637f78fe452c114a1c67
+
+{
+    "msg": "Successfully deleted record"
+}
+
+Put request: 
+https://api.vschool.io/steven/todo/64f363b578fe452c114a1c69
+
+{
+  "price": 10
+}
