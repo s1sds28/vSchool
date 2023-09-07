@@ -20,7 +20,6 @@ function listData(data){
         const itemId = data[i]._id
 
         listItem.textContent = data[i].title;
-        listItem.id = `li:${itemId}`
 
         // make a div for buttons
         const divButtons = document.createElement("div");
@@ -50,13 +49,11 @@ function listData(data){
             editItem(itemId)
         })
 
-
         if(data[i].completed) { 
             listItem.style.textDecoration = "line-through";
         } else {
             listItem.style.textDecoration = "none";
         }
-
 
         // Add edit and delete buttons to divButtons
         divButtons.appendChild(editItemButton)
@@ -82,6 +79,7 @@ function deleteItem(id) {
 }
 
 function editItem(id) {
+    addTodoButton.textContent = "Save Todo"
     const parameterUrl = id
     axios.get(baseUrl.concat(parameterUrl))
     .then(fillForm(id))
@@ -112,13 +110,10 @@ function clearList(){
 
 }
 
-todoForm.addEventListener("submit", function(event){
+todoForm.addEventListener("submit", (event) => {
     event.preventDefault()
-    console.log(todosId.value)
     isEditing = todosId.value
     const todoId = todosId.textContent 
-
-
 
     const todo = {
         title: todoForm.title.value,
@@ -132,28 +127,26 @@ todoForm.addEventListener("submit", function(event){
     if(!isEditing){
         axios.post("https://api.vschool.io/steven/todo", todo)
             .then(response => console.log(response.data))
-            .then(clearList)
             .then(getData)
             .catch(error => console.log(error))
     } else {
         const parameterUrl = String(todosId.textContent)
-        // console.log(baseUrl.concat(parameterUrl))
         console.log(String(todosId.textContent))
         axios.put(baseUrl.concat(parameterUrl), todo)
         .then(res => console.log(res.data))
-        
+        .then(getData)
         .catch(res => console.log(res.data))
-    }
-    clearList()
-    clearForm()
-    getData()
-    
+    }   
 })
 
-clearButton.addEventListener("click", () => clearForm())
+clearButton.addEventListener("click", (event) => {
+    event.preventDefault()
+    clearForm()
+})
 
-const clearForm = () => {
-    todosId.textContent = "";
-    todosId.value = false;
-    todoForm.reset();
+function clearForm() {
+    addTodoButton.textContent = "Add Todo"
+    todosId.textContent = ""
+    todosId.value = false
+    todoForm.reset()
 }
