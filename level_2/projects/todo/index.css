@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(45deg, black, gray);
+    padding:10px
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+
+}
+
+.todo-app h2 {
+    color:darkslategrey;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.todo-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr 2fr);
+    outline: none;
+    border: none;
+}
+
+.todo-form-item {
+    outline: none;
+    border: none;
+}
+
+
+#todo-list {
+    margin-top: 10px;
+    border-top: 3px solid black;
+    border-bottom: none;
+    margin-bottom: 10px;
+}
+
+.todo-list ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    background: #edeef0;
+    padding-left: 20px;
+    margin-bottom: 25px;
+
+}
+
+.todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    width: 900px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.checked {
+    text-decoration: line-through;
+}
+
+.todo-list li button{
+
+    background-color: darkslategrey;
+    color: #fff;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+/* .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    background: #edeef0;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+input {
+    flex: 1;
+    border:none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+
+} */
+
+/* button {
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: darkgray;
+    color: black;
+    font-size: larger;
+    cursor: pointer;
+    border-radius: 40px;
+} */
+
+/* ul li {
+    list-style: none;
+    font-size: large;
+    padding-left: 20px;
+
+} */
