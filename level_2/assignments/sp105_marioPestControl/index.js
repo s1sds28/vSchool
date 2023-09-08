@@ -18,9 +18,8 @@ const coinsElement = document.getElementById("totalCoins")
 //Submit buttons finds total coins and adds it to coins element
 form.addEventListener("submit", function(event) {
     event.preventDefault()
-    console.log("test")
     const coinsNumber = Number(goombas.value) * 5 + Number(bobomb.value) * 7 + Number(cheepCheep.value) * 11
-    coinsElement.textContent = String(coinsNumber)
+    coinsElement.textContent = coinsNumber
 });
 
 // Reset button resets all baddies and inputs

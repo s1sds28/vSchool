@@ -1,5 +1,7 @@
 const button = document.getElementById("button")
 
+
+
 const xhr = new XMLHttpRequest()
 
 button.addEventListener("click", () => {
@@ -28,3 +30,11 @@ button.addEventListener("click", () => {
         } 
     }
 })
+
+function getData(){
+    axios.get("https://api.vschool.io/pokemon")
+        .then(res => console.log(res.data.objects[0].pokemon))
+        .catch(err => console.log(err))
+}
+
+getData()
