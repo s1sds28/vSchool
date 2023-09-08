@@ -89,7 +89,7 @@ function makeStrings(arr){
     //     } else { result.push(arr[i].name + "can go to The Matrix")}
     // }
     // return result
-    return arr.map(foo => foo.age < 18 ? foo.name + "is under age!!" : foo.name + "can go in the matrix")
+    return arr.map(foo => foo.age < 18 ? foo.name + " is under age!!" : foo.name + " can go in the matrix")
 }
   
 console.log(makeStrings([
