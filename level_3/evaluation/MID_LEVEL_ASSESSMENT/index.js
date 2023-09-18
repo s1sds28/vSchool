@@ -58,6 +58,9 @@ function countVowels(input) {
     return count 
 }
 
+// const countVowels = input =>  input.split("").reduce((final, letter) => { if((/^[aeiou]$/i).test(letter)) final++ 
+//         return final }, 0)
+
 const test1 = 'Hello, World!';
 const test2 = 'Counting Vowels';
 
