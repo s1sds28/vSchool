@@ -3,7 +3,7 @@ Challenge 1: Sort Array with Preserved Index for -1 Values
 -All non -1 values in the array should be sorted in ascending order.
 -The -1 values should retain their original index positions in the sorted array.
 */
-//My understanding is... solution([100, -1, 50, -1, 75]) // => [50,-1,75, -1, 100]
+//My understanding is... solution([100, -1, 50, -1, 75]) // => [50, -1, 75, -1, 100]
 
 function solution(arr){
     let result = []
