@@ -1,3 +1,8 @@
+.cards-list {
+    flex-direction: column; /* Change from 'row' to 'column' */
+    gap: 20px;
+    overflow-y: auto; /* Change from 'overflow-x' to 'overflow-y' if needed */
+}
 
 .cards-list {
     display: flex;
@@ -12,41 +17,22 @@
     flex: 0 0 auto;         /* ADD */
     display: flex;          /* ADD */
     flex-direction: column; /* ADD */
-    position: relative;
 }
 
-.card--image {
-    width: 100%;
-    border-radius: 9px;
-    margin-bottom: 9px;
+.card p {
+    text-align: left;
 }
 
-/* ADD */
-.card--title {
-    overflow: hidden;
-    text-overflow: ellipsis;
+.card--place {
+    text-align: left;
 }
 
-.card--stats {
-    display: flex;
-    align-items: center;
-}
-
-.card--star {
-    height: 14px;
-}
-
-/* ADD */
 .card--price {
-    margin-top: auto;
+    text-align: left;
+
 }
 
-.card--badge {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    background-color: white;
-    padding: 5px 7px;
-    border-radius: 2px;
-    font-weight: bold;
+.card--season {
+    text-align: left;
+
 }

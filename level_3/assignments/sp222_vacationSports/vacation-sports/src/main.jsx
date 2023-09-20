@@ -17,9 +17,7 @@ import './Card.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Header />
-    <section className="cards-list">
-      <App />
-    </section>
+    <App />
     <Footer />
   </React.StrictMode>,
 )

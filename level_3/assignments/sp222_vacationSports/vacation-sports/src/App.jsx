@@ -21,7 +21,7 @@ export default function App() {
   })
 
   return (
-    <div>
+    <div className="cards-list">
       { cards }
     </div>
   )
