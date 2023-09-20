@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaTwitter, FaFacebook, FaGithub } from 'react-icons/fa';
-// npm install react-icons
 
 import './Footer.css'
 
