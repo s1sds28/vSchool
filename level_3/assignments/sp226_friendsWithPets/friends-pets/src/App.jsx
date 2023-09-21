@@ -59,10 +59,8 @@ function App() {
 
     )
   })
-
+  
   return (
-
-
     <>
       <div className='friend-card-container'>
         <h1>Friends: </h1>
