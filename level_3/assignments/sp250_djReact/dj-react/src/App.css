@@ -1,0 +1,74 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.squareGrid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 100px);
+  grid-gap: 10px;
+}
+
+.white {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.black {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.purple {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
+  background-color: purple;
+}
+
+.blue {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
+  background-color: blue;
+}
+
+.green {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
+  background-color: green;
+}
+
+.yellow {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 4px;
+  border-radius: 5px;
+  background-color: yellow;
+}
