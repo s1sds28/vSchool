@@ -1,4 +1,9 @@
 import { useState } from 'react'
+
+import Buttons from './Buttons'
+import SquaresGrid from './SquaresGrid'
+import AudioPlayer from './AudioPlayer'
+
 import './App.css'
 
 function App() {
@@ -8,11 +13,6 @@ function App() {
   const colors = ["white", "black", "yellow", "green"]
 
   const randomInt = () => Math.floor(Math.random() * 4)
-
-
-  let squareElements = squares.map((square, index)=> (
-    <div key={index} className={`${square}`}></div>
-  ))
 
   function smallTimeDJ() {
     setSquares((prevState) => 
@@ -75,22 +75,20 @@ function App() {
   }
   return (
     <>
-      <section className='squareGrid'>
-        {squareElements}
-      </section>
+      <SquaresGrid squares={squares}/>
       <br></br>
-      <button onClick={smallTimeDJ}>Small Time DJ</button>
-      <button onClick={partyDJ}>Party DJ</button>
-      <button onClick={leftBlue}>left Blue</button>
-      <button onClick={rightBlue}>right Blue</button>
-
-
-      <button onClick={topLeft}>Top left</button>
-      <button onClick={topRight}>Top right</button>
-      <button onClick={bottonLeft}>Bottom Left</button>
-      <button onClick={bottomRight}>Bottom Right</button>
-
-      <button onClick={oneOfTheGreats}>One of the Greats</button>
+      <Buttons
+        smallTimeDJ={smallTimeDJ}
+        partyDJ={partyDJ}
+        leftBlue={leftBlue}
+        rightBlue={rightBlue}
+        topLeft={topLeft}
+        topRight={topRight}
+        bottomLeft={bottonLeft}
+        bottomRight={bottomRight}
+        oneOfTheGreats={oneOfTheGreats}
+      />
+      <AudioPlayer />
     </>
   )
 }
