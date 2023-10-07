@@ -10,9 +10,17 @@ export default function CardList(props){
 
     const allCards = submittedForms.map(card => {
 
-        const {firstName} = card
+        const {firstName, lastName, phone, email, placeOfBirth, favoriteFood, comment} = card
 
-        return <CardSolo firstName={firstName} />
+        return <CardSolo 
+                firstName={firstName}
+                lastName={lastName}
+                phone={phone}
+                email={email}
+                placeOfBirth={placeOfBirth}
+                favoriteFood={favoriteFood}
+                comment={comment}
+                 />
     })
 
     return (

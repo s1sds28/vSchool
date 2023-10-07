@@ -1,5 +1,6 @@
 /* Badge Container */
 .badge-container {
+  margin: 3%;
   align-items: center;
   padding: 8px 12px;
   background-color: #d2d5d8;
@@ -37,4 +38,9 @@
   color: black;
   cursor: pointer;
   font-size: 14px;
+}
+
+
+.invalid {
+  border: 3px solid red;
 }

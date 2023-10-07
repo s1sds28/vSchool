@@ -16,7 +16,6 @@ export default function Badge(props) {
     comment: "",
   })
 
-
   const handleChange = (event) => {
     event.preventDefault()
     const {name, value } = event.target;
@@ -26,33 +25,28 @@ export default function Badge(props) {
     });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   setSubmittedForms([...submittedForms, formData])
-  //   e.target.reset();
-  //   formData.firstName = "";
-  //   formData.lastName= "";
-  //   formData.email= "";
-  //   formData.placeOfBirth= "";
-  //   formData.phone= "";
-  //   formData.favoriteFood= "";
-  //   formData.comment= "";
-  //   console.log(submittedForms)
-  // }
+  const validatePhone = (value) => {
+    return /^\d{10}$/.test(value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleFormSubmit(formData); // Call the function passed from parent with the form data
-  //   formData.firstName = "";
-  //   formData.lastName= "";
-  //   formData.email= "";
-  //   formData.placeOfBirth= "";
-  //   formData.phone= "";
-  //   formData.favoriteFood= "";
-  //   formData.comment= "";
 
-    e.target.reset();
+    // This renders an empty card 
+    // formData.firstName = "";
+    // formData.lastName= "";
+    // formData.email= "";
+    // formData.placeOfBirth= "";
+    // formData.phone= "";
+    // formData.favoriteFood= "";
+    // formData.comment= "";
+
+    // e.target.reset() is not working correctly  
+    // e.target.reset();
   }
+
+  const isPhoneValid = validatePhone(formData.phone);
 
   return (
     <>
@@ -60,6 +54,7 @@ export default function Badge(props) {
       <span>Badge Text:</span>
       <div className="small-boxes">
       <input 
+        minLength="3"
         type="text"
         className="input-box"
         placeholder="First Name"
@@ -69,6 +64,7 @@ export default function Badge(props) {
         onChange={handleChange}
         />
       <input 
+        minLength="3"
         type="text" 
         className="input-box" 
         placeholder="Last Name"
@@ -78,6 +74,7 @@ export default function Badge(props) {
         value={formData.lastName} 
         />
       <input 
+        minLength="3"
         type="email" 
         className="input-box" 
         placeholder="Email" 
@@ -87,6 +84,7 @@ export default function Badge(props) {
         value={formData.email}
         />
       <input 
+        minLength="3"
         type="text" 
         className="input-box"
         placeholder="Place of Birth"
@@ -96,8 +94,9 @@ export default function Badge(props) {
         value={formData.placeOfBirth}
          />
       <input 
+        minLength="3"
         type="text" 
-        className="input-box" 
+        className={`input-box ${!isPhoneValid ? 'invalid' : ''}`}
         placeholder="Phone"
         name='phone'
         id='phone'
@@ -105,6 +104,7 @@ export default function Badge(props) {
         value={formData.phone}
         />
       <input 
+        minLength="3"
         type="text" 
         className="input-box" 
         placeholder="Favorite Food"
@@ -124,7 +124,20 @@ export default function Badge(props) {
 
       </div>
         <br />
-      <button className="submit-button" type='submit'>Submit</button>
+      <button 
+        disabled={
+          !formData.firstName ||
+          !formData.lastName ||
+          !formData.email ||
+          !formData.placeOfBirth ||
+          !formData.phone ||
+          !formData.favoriteFood ||
+          !formData.comment}
+        className="submit-button"
+        type='submit'
+        >
+          Submit
+        </button>
     </form>
 
     </>
