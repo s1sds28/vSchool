@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import './badge.css';
 
 
-export default function Badge() {
+export default function Badge(props) {
+  const { submittedForms, handleFormSubmit } = props
 
+  console.log(submittedForms)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,7 +16,6 @@ export default function Badge() {
     comment: "",
   })
 
-  const [submittedForms, setSubmittedForms] = useState ([])
 
   const handleChange = (event) => {
     event.preventDefault()
@@ -25,18 +26,32 @@ export default function Badge() {
     });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   setSubmittedForms([...submittedForms, formData])
+  //   e.target.reset();
+  //   formData.firstName = "";
+  //   formData.lastName= "";
+  //   formData.email= "";
+  //   formData.placeOfBirth= "";
+  //   formData.phone= "";
+  //   formData.favoriteFood= "";
+  //   formData.comment= "";
+  //   console.log(submittedForms)
+  // }
+
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmittedForms([...submittedForms, formData])
+    e.preventDefault();
+    handleFormSubmit(formData); // Call the function passed from parent with the form data
+  //   formData.firstName = "";
+  //   formData.lastName= "";
+  //   formData.email= "";
+  //   formData.placeOfBirth= "";
+  //   formData.phone= "";
+  //   formData.favoriteFood= "";
+  //   formData.comment= "";
+
     e.target.reset();
-    formData.firstName = "";
-    formData.lastName= "";
-    formData.email= "";
-    formData.placeOfBirth= "";
-    formData.phone= "";
-    formData.favoriteFood= "";
-    formData.comment= "";
-    console.log(submittedForms)
   }
 
   return (
@@ -111,6 +126,7 @@ export default function Badge() {
         <br />
       <button className="submit-button" type='submit'>Submit</button>
     </form>
+
     </>
   );
 }
