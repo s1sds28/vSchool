@@ -31,19 +31,17 @@ export default function Badge(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleFormSubmit(formData); // Call the function passed from parent with the form data
+    handleFormSubmit(formData);
 
-    // This renders an empty card 
-    // formData.firstName = "";
-    // formData.lastName= "";
-    // formData.email= "";
-    // formData.placeOfBirth= "";
-    // formData.phone= "";
-    // formData.favoriteFood= "";
-    // formData.comment= "";
-
-    // e.target.reset() //is not working correctly  
-    // e.target.reset();
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      placeOfBirth: "",
+      phone: "",
+      favoriteFood: "",
+      comment: "",  
+    })
   }
 
   const isPhoneValid = validatePhone(formData.phone);
