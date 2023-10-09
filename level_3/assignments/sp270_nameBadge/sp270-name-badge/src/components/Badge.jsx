@@ -42,7 +42,7 @@ export default function Badge(props) {
     // formData.favoriteFood= "";
     // formData.comment= "";
 
-    // e.target.reset() is not working correctly  
+    // e.target.reset() //is not working correctly  
     // e.target.reset();
   }
 

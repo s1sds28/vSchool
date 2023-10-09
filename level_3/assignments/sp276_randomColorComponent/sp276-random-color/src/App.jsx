@@ -10,7 +10,7 @@ import Card from './components/Card'
 
 
 function App() {
-  const [backgroundColor, setBackGroundColor] = useState('sea')
+  const [backgroundColor, setBackGroundColor] = useState("")
   const [count, setCount] = useState(0)
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
       <p style={{ backgroundColor: `#${backgroundColor}`}} className="read-the-docs">
         change the backgroundColor
       </p>
-      <p>{`${count}`}</p>
+      {/* <p>{`${count}`}</p> */}
       <button onClick={handleChange}>Change Background Color</button>
     </>
   )
