@@ -16,6 +16,10 @@ function App() {
 
   const [allMemeImages, setAllMemeImages] = useState()
 
+  // function handleChange(){
+  //   setMeme(prevState => ...prevState, )
+  // }
+
   return (
     <>
       <Header />

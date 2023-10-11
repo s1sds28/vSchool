@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Header.css'
+import './Components.css'
 
 import myImg from '../images/face.jpg'
 
