@@ -3,7 +3,7 @@ import './App.css'
 
 import Header from './components/Header'
 
-import NewMeme from './components/NewMeme'
+import {v4 as uuidv4} from 'uuid'
 
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
   const [meme, setMeme] = React.useState({
       topText: "",
       bottomText: "",
-      randomImage: "http://i.imgflip.com/1bij.jpg" 
+      randomImage: "http://i.imgflip.com/1bij.jpg",
+      id: uuidv4()
   })
   const [allMemes, setAllMemes] = React.useState([])
 
@@ -39,7 +40,7 @@ function App() {
   }
 
   function saveMeme(event) {
-    console.log('nothing')
+    console.log(meme.id)
   }
 
   return (

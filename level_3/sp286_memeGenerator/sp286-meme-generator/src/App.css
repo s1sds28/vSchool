@@ -30,6 +30,7 @@
 }
 
 .save--button {
+  margin-top: 20px;
   height: 40px;
   font-family: "Karla", sans-serif;
   border-radius: 5px;
