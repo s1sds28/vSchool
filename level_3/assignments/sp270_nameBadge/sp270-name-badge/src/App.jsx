@@ -19,8 +19,6 @@ function App() {
     setSubmittedForms(prevForms => prevForms.map(badge => badge.id !== badgeId ? badge : update))
   }
 
-  //map over submittedForms 
-
   return (
     <>
       <Badge 
