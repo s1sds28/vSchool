@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './badge.css';
+import {v4 as uuidv4} from 'uuid'
 
 
 export default function Badge(props) {
@@ -14,6 +15,7 @@ export default function Badge(props) {
     phone: "",
     favoriteFood: "",
     comment: "",
+    id: uuidv4()
   })
 
   const handleChange = (event) => {
@@ -41,8 +43,10 @@ export default function Badge(props) {
       phone: "",
       favoriteFood: "",
       comment: "",  
+      id: uuidv4()
     })
   }
+ 
 
   const isPhoneValid = validatePhone(formData.phone);
 

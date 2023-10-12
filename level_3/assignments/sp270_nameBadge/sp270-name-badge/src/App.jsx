@@ -11,6 +11,14 @@ function App() {
     setSubmittedForms([...submittedForms, formData]);
   };
 
+  function handleDelete(badgeId){
+    setSubmittedForms(prevForms => prevForms.filter(badge => badge.id !== badgeId))
+  }
+
+  function handleEdit(badgeId, update){
+    setSubmittedForms(prevForms => prevForms.map(badge => badge.id !== badgeId ? badge : update))
+  }
+
   //map over submittedForms 
 
   return (
@@ -21,6 +29,8 @@ function App() {
       />
       <CardList 
       submittedForms={submittedForms}
+      handleDelete = {handleDelete}
+      handleEdit = {handleEdit}
       />
     </>
   )

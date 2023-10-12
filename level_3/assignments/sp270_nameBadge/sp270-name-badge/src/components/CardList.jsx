@@ -6,11 +6,11 @@ import './badge.css'
 
 export default function CardList(props){
 
-    const { submittedForms } = props
+    const { submittedForms, handleDelete, handleEdit } = props
 
     const allCards = submittedForms.map(card => {
 
-        const {firstName, lastName, phone, email, placeOfBirth, favoriteFood, comment} = card
+        const {firstName, lastName, phone, email, placeOfBirth, favoriteFood, comment, id} = card
 
         return <CardSolo 
                 firstName={firstName}
@@ -20,6 +20,9 @@ export default function CardList(props){
                 placeOfBirth={placeOfBirth}
                 favoriteFood={favoriteFood}
                 comment={comment}
+                badgeId={id}
+                handleDelete={handleDelete}
+                handleEdit={handleEdit}
                  />
     })
 
