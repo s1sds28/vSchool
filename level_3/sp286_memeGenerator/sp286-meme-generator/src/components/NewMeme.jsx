@@ -1,6 +1,8 @@
 // MainContent.js is 
 import React from 'react';
 
+import './Components.css'
+
 function NewMeme(props) {
 
     const { meme, allMemes, getMemeImage, handleChange, saveMeme } = props
@@ -8,7 +10,6 @@ function NewMeme(props) {
   return (
     <>
       <div className="form">
-        <div className="form">
                 <input 
                     type="text"
                     placeholder="Top text"
@@ -31,8 +32,9 @@ function NewMeme(props) {
                 >
                     refresh meme image
                 </button>
+                <button className="save--button" onClick={saveMeme}>Save meme</button>
 
-            </div>
+
 
       </div>
         <div className="meme">
@@ -40,7 +42,6 @@ function NewMeme(props) {
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
         </div>
-      <button className="save--button" onClick={saveMeme}>Save meme</button>
     </>
   );
 }
