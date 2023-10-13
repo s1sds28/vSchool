@@ -46,19 +46,23 @@ function App() {
     // Change the meme's top and bottom text
     function handleChange(event) {
         const {name, value} = event.target
-        const newId = uuidv4();
         setMeme(prevMeme => ({
             ...prevMeme,
             [name]: value,
-            id: newId
         }))
     }
 
     function saveMeme(event) {
-        event.preventDefault()
-        handleChange(event)
         setSavedMemes([...savedMemes, meme]);
         console.log(savedMemes)
+        setMeme(prevMeme => {
+            return {
+                ...prevMeme,
+                topText: "",
+                bottomText: "",
+                id: uuidv4()
+            }
+        })
     };
 
     function handleDelete(id) {
@@ -66,7 +70,7 @@ function App() {
     }
 
     function handleEdit(id, update){
-        setSsavedMemes(prevMemes => prevMemes.map(meme => meme.id !== id ? meme : update))
+        setSavedMemes(prevMemes => prevMemes.map(meme => meme.id !== id ? meme : update))
       }
 
   return (

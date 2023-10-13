@@ -23,7 +23,7 @@ export default function CardList(props){
                 badgeId={id}
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
-                 />
+            />
     })
 
     return (

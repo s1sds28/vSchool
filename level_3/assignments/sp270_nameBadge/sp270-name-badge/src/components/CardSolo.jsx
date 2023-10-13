@@ -30,7 +30,7 @@ function CardSolo(props) {
 
   useEffect(() => {
     setEdit({
-      firstName,
+    firstName,
     lastName,
     phone,
     email,
