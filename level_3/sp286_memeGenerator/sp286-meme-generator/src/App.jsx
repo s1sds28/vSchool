@@ -8,23 +8,31 @@ import './App.css';
 import Header from './components/Header';
 import NewMeme from './components/NewMeme'; // Import the new component
 
+import SavedMemes from './components/SavedMemes'
+
 
 function App() {
 
+    // set up state for meme object
     const [meme, setMeme] = React.useState({
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg",
         id: uuidv4()
     })
-    const [allMemes, setAllMemes] = React.useState([])
 
+    // save memes in an array 
+    const [ savedMemes, setSavedMemes ] = React.useState([])
+
+    // fetch an array of memes from api
+    const [ allMemes, setAllMemes ] = React.useState([])
     React.useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(res => res.json())
             .then(data => setAllMemes(data.data.memes))
     }, [])
 
+    // get a new meme at random 
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemes.length)
         const url = allMemes[randomNumber].url
@@ -35,32 +43,38 @@ function App() {
         }))  
     }
 
+    // Change the meme's top and bottom text
     function handleChange(event) {
         const {name, value} = event.target
+        const newId = uuidv4();
         setMeme(prevMeme => ({
             ...prevMeme,
-            [name]: value
+            [name]: value,
+            id: newId
         }))
     }
 
     function saveMeme(event) {
-    console.log(meme.id)
-    }
+        event.preventDefault()
+        setSavedMemes([...savedMemes, meme]);
+        console.log(savedMemes)
+    };
 
   return (
     <>
-      <Header />
-      <main>
+        <Header />
         <NewMeme
-          meme={meme}
-          allMemes={allMemes}
-          getMemeImage={getMemeImage}
-          handleChange={handleChange}
-          saveMeme={saveMeme}
+            meme={meme}
+            allMemes={allMemes}
+            getMemeImage={getMemeImage}
+            handleChange={handleChange}
+            saveMeme={saveMeme}
         />
-      </main>
+        <SavedMemes
+            savedMemes={savedMemes}
+        />
     </>
   )
 }
 
-export default App
+export default App;
