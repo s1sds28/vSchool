@@ -56,6 +56,7 @@ function App() {
 
     function saveMeme(event) {
         event.preventDefault()
+        handleChange(event)
         setSavedMemes([...savedMemes, meme]);
         console.log(savedMemes)
     };
@@ -65,7 +66,6 @@ function App() {
         <Header />
         <NewMeme
             meme={meme}
-            allMemes={allMemes}
             getMemeImage={getMemeImage}
             handleChange={handleChange}
             saveMeme={saveMeme}

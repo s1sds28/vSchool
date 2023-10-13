@@ -5,7 +5,7 @@ import './Components.css'
 
 function NewMeme(props) {
 
-    const { meme, allMemes, getMemeImage, handleChange, saveMeme } = props
+    const { meme, getMemeImage, handleChange, saveMeme } = props
 
   return (
     <>
