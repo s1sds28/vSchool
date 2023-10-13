@@ -14,6 +14,14 @@ export default function Meme(props){
         randomImage: meme.randomImage
     })
 
+    // useEffect(() => {
+    //     setEdit({
+    //         topText,
+    //         bottomText,
+    //         randomImage
+    //     })
+    //   }, [toggle])
+
     function handleChange(event) {
         const {name, value} = event.target
         setEdit(prevEdit => {
@@ -25,9 +33,11 @@ export default function Meme(props){
     }
 
     function handleSubmit(event){
-        console.log("handle Submit")
         event.preventDefault()
-        handleEdit(id, edit)
+
+        handleEdit(meme.id, edit)
+        console.log("handle Submit")
+
         setToggle(prev => !prev)
     }
 
@@ -44,7 +54,7 @@ export default function Meme(props){
             <button onClick={() => handleDelete(meme.id)}>Delete</button>
         </div>
         ) : ( 
-            <form key={meme.id} onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input 
                     value = {edit.topText}
                     name="topText"

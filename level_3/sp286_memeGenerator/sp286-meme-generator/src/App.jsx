@@ -70,6 +70,7 @@ function App() {
     }
 
     function handleEdit(id, update){
+        console.log("handleEdit in App.js")
         setSavedMemes(prevMemes => prevMemes.map(meme => meme.id !== id ? meme : update))
       }
 
