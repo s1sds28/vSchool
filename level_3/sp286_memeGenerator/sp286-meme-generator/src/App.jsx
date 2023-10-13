@@ -61,6 +61,14 @@ function App() {
         console.log(savedMemes)
     };
 
+    function handleDelete(id) {
+        setSavedMemes(prevMemes => prevMemes.filter(meme => meme.id !== id))
+    }
+
+    function handleEdit(id, update){
+        setSsavedMemes(prevMemes => prevMemes.map(meme => meme.id !== id ? meme : update))
+      }
+
   return (
     <>
         <Header />
@@ -72,6 +80,8 @@ function App() {
         />
         <SavedMemes
             savedMemes={savedMemes}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
         />
     </>
   )
