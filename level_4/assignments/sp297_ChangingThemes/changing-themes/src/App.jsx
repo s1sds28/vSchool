@@ -6,17 +6,20 @@ import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
+import { ThemeContextProvider } from './ThemeContext'
 
 
-function App() {
+function App(props) {
 
   return (
     <>
-      <div className='app-container'>
-        <Header></Header>
-        <MainContent></MainContent>
-        <Footer></Footer>
-      </div>
+      <ThemeContextProvider>
+        <div className='app-container'>
+          <Header></Header>
+          <MainContent></MainContent>
+          <Footer></Footer>
+        </div>
+      </ThemeContextProvider>
     </>
   )
 }
