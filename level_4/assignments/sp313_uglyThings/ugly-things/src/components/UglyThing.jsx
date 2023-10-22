@@ -4,16 +4,16 @@ import { v4 as uuidv4 } from 'uuid';
 
 import axios from 'axios'
 
-
 import '../index.css'
 
 function UglyThing(props){
 
     const { handleDelete, db_id, title, description, imgUrl } = props
 
+    // set toggle state
     const [toggle, setToggle] = useState(true)
 
-    // set State for uglyThing: 
+    // set uglyThing state 
     const [uglyThing, setUglyThing] = useState({
         id: uuidv4(),
         db_id: db_id,
@@ -33,7 +33,7 @@ function UglyThing(props){
         }))
     }
 
-    // handle submit by makeing axios put request
+    // handle submit by making axios put request
     function handleSubmit(e){
         e.preventDefault()
         const apiUrl = `https://api.vschool.io/steven/thing/${db_id}`
@@ -67,13 +67,15 @@ function UglyThing(props){
         .then(response => {
             console.log('PUT Request Successful!', response.data);
         })
+
         handleDelete(db_id)
+
         .catch(error => {
             console.error('Error making PUT request:', error);
         });
 
     }
-    
+
     return (
         <>{toggle ? (
             <div key={uglyThing.id}>
@@ -90,30 +92,23 @@ function UglyThing(props){
             ) : (
             <form onSubmit={handleSubmit}>
                 <input
-                value={uglyThing.title}
-                name="title"
-                onChange={handleChange}
-                placeholder={uglyThing.title}
+                    value={uglyThing.title}
+                    name="title"
+                    onChange={handleChange}
+                    placeholder={uglyThing.title}
                 />
-
                 <input
-                value={uglyThing.description}
-                name="description"
-                onChange={handleChange}
-                placeholder={uglyThing.description}
+                    value={uglyThing.description}
+                    name="description"
+                    onChange={handleChange}
+                    placeholder={uglyThing.description}
                 />
-
                 <input
-                value={uglyThing.imgUrl}
-                name="imgUrl"
-                onChange={handleChange}
-                placeholder={uglyThing.imgUrl}
+                    value={uglyThing.imgUrl}
+                    name="imgUrl"
+                    onChange={handleChange}
+                    placeholder={uglyThing.imgUrl}
                 />
-
-
-
-
-     
             <button type="submit" className="button">Save</button>
             <button className="button" onClick={() => setToggle(prevState => !prevState)}>Cancel</button>        
             </form>

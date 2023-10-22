@@ -8,9 +8,11 @@ import {v4 as uuidv4} from 'uuid'
 
 function UglyThings(props){
 
+    // useState for saving ugly data
     const [uglyData, setUglyData] = useState([])
-    
+
     const url = "https://api.vschool.io/steven/thing"
+
     // handleDelete
     function handleDelete(id){
         setUglyData(prevState => prevState.filter(uglyThing => uglyThing._id !== id))
@@ -22,7 +24,7 @@ function UglyThings(props){
         .catch(err => console.log(err))
     }, [])
 
-    console.log('array', uglyData)
+    console.log('Array', uglyData)
 
 
     const allUglyThings = uglyData.map((uglyThing) => {
