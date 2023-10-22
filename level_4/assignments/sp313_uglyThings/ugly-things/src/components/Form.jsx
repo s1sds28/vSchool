@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 
+import axios from 'axios';
+
 
 function Form(props){
 
@@ -21,32 +23,25 @@ function Form(props){
     }
 
     function handleSubmit(e){
-        e.preventDefault()
-        const url = "https://api.vschool.io/steven/thing"
-        fetch(url, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-
+        e.preventDefault();
+        const url = "https://api.vschool.io/steven/thing";
+        
+        axios.post(url, formData)
+        .then(response => {
+            console.log('Success:', response.data);
+            window.location.reload()
         })
         .catch(error => {
-            console.log('Error:', error)
-        })
+            console.log('Error:', error);
+        });
+    
         setFormData({
             title: "",
             description: "",
             imgUrl: ""
-        })
-
-
+        });
     }
-
+    
     console.log(formData)
     return (
         <>

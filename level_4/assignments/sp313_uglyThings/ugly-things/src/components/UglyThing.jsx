@@ -2,11 +2,14 @@ import React, { useState } from "react";
 
 import { v4 as uuidv4 } from 'uuid';
 
+import axios from 'axios'
+
+
 import '../index.css'
 
 function UglyThing(props){
 
-    const { db_id, title, description } = props
+    const { handleDelete, db_id, title, description, imgUrl } = props
 
     const [toggle, setToggle] = useState(true)
 
@@ -18,9 +21,9 @@ function UglyThing(props){
         description: description,
     })
 
+    // handle change by updating state
     function handleChange(e){
         e.preventDefault()
-
         const { name, value } = e.target
 
         setUglyThing(prevState => ({
@@ -29,15 +32,45 @@ function UglyThing(props){
         }))
     }
 
+    // handle submit by makeing axios put request
     function handleSubmit(e){
         e.preventDefault()
-        console.log("handle submit")
+        const apiUrl = `https://api.vschool.io/steven/thing/${db_id}`
 
-        
+        const { title, description, imgUrl } = uglyThing
 
+        const newData = {
+            title: title,
+            description: description,
+            imgUrl: imgUrl
+        }
 
+        axios.put(apiUrl, newData)
+        .then(response => {
+            console.log('PUT Request Successful!', response.data);
+        })
+        .catch(error => {
+            console.error('Error making PUT request:', error);
+        });
 
         setToggle(prev => !prev)
+    }
+
+    function apiHandleDelete(e){
+        e.preventDefault()
+        console.log("handle Delete")
+        console.log(db_id)
+        const apiUrl = `https://api.vschool.io/steven/thing/${db_id}`
+
+        axios.delete(apiUrl)
+        .then(response => {
+            console.log('PUT Request Successful!', response.data);
+        })
+        handleDelete(db_id)
+        .catch(error => {
+            console.error('Error making PUT request:', error);
+        });
+
     }
 
     function handleSave(e){
@@ -45,17 +78,10 @@ function UglyThing(props){
         console.log("Save")
     }
 
-    function handleDelete(e){
-        e.preventDefault()
-        console.log("Delete")
-    }
-
     function handleEdit(e){
         e.preventDefault()
         console.log("Edit")
     }
-
-    
 
     return (
         <>{toggle ? (
@@ -66,7 +92,7 @@ function UglyThing(props){
                 {uglyThing.db_id}
                 <br/>
                 <button className="button" onClick={() => setToggle(prevState => !prevState)}>Edit</button>
-                <button className="button" onClick={handleDelete}>Delete</button>
+                <button className="button" onClick={apiHandleDelete}>Delete</button>
             </div>
             ) : (
             <form onSubmit={handleSubmit}>
