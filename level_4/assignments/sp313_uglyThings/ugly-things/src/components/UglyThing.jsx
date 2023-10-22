@@ -19,6 +19,7 @@ function UglyThing(props){
         db_id: db_id,
         title: title,
         description: description,
+        imgUrl: imgUrl
     })
 
     // handle change by updating state
@@ -72,24 +73,16 @@ function UglyThing(props){
         });
 
     }
-
-    function handleSave(e){
-        e.preventDefault()
-        console.log("Save")
-    }
-
-    function handleEdit(e){
-        e.preventDefault()
-        console.log("Edit")
-    }
-
+    
     return (
         <>{toggle ? (
             <div key={uglyThing.id}>
-                {uglyThing.id}
-                {uglyThing.title}
-                {uglyThing.description}
-                {uglyThing.db_id}
+                <p>id: {uglyThing.id}</p>
+                <p>db_id: {uglyThing.db_id}</p>
+                <p>title: {uglyThing.title}</p>
+                <p>description:{uglyThing.description}</p>
+                <p>imgUrl: {uglyThing.imgUrl}</p>
+
                 <br/>
                 <button className="button" onClick={() => setToggle(prevState => !prevState)}>Edit</button>
                 <button className="button" onClick={apiHandleDelete}>Delete</button>
@@ -102,6 +95,24 @@ function UglyThing(props){
                 onChange={handleChange}
                 placeholder={uglyThing.title}
                 />
+
+                <input
+                value={uglyThing.description}
+                name="description"
+                onChange={handleChange}
+                placeholder={uglyThing.description}
+                />
+
+                <input
+                value={uglyThing.imgUrl}
+                name="imgUrl"
+                onChange={handleChange}
+                placeholder={uglyThing.imgUrl}
+                />
+
+
+
+
      
             <button type="submit" className="button">Save</button>
             <button className="button" onClick={() => setToggle(prevState => !prevState)}>Cancel</button>        
