@@ -65,6 +65,7 @@ function Form(props){
                     placeholder="imgUrl"
                     onChange={handleChange}
                 ></input>
+                <br/>
                 <button type="submit" onClick={handleSubmit}>Save Ugly Thing</button>
             </form>
         </>

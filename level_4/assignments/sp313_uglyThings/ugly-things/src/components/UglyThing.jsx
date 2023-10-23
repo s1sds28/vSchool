@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 
 import '../index.css'
+import './components.css'
 
 function UglyThing(props){
 
@@ -79,11 +80,9 @@ function UglyThing(props){
     return (
         <>{toggle ? (
             <div key={uglyThing.id}>
-                <p>id: {uglyThing.id}</p>
-                <p>db_id: {uglyThing.db_id}</p>
-                <p>title: {uglyThing.title}</p>
-                <p>description:{uglyThing.description}</p>
-                <p>imgUrl: {uglyThing.imgUrl}</p>
+                <h1>{uglyThing.title}</h1>
+                <p>{uglyThing.description}</p>
+                <div className="uglyThing-image" style={{ backgroundImage: `url(${uglyThing.imgUrl})` }}></div>
 
                 <br/>
                 <button className="button" onClick={() => setToggle(prevState => !prevState)}>Edit</button>
@@ -109,6 +108,9 @@ function UglyThing(props){
                     onChange={handleChange}
                     placeholder={uglyThing.imgUrl}
                 />
+                <div className="uglyThing-image" style={{ backgroundImage: `url(${uglyThing.imgUrl})` }}></div>
+
+
             <button type="submit" className="button">Save</button>
             <button className="button" onClick={() => setToggle(prevState => !prevState)}>Cancel</button>        
             </form>
