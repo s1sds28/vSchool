@@ -60,8 +60,6 @@ function UglyThing(props){
 
     function apiHandleDelete(e){
         e.preventDefault()
-        console.log("handle Delete")
-        console.log(db_id)
         const apiUrl = `https://api.vschool.io/steven/thing/${db_id}`
 
         axios.delete(apiUrl)
