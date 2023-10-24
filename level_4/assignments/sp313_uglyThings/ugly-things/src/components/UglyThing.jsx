@@ -75,6 +75,11 @@ function UglyThing(props){
 
     }
 
+    function handleCancel(e){
+        setToggle(prevState => !prevState)
+        window.location.reload()
+    }
+
     return (
         <>{toggle ? (
             <div key={uglyThing.id}>
@@ -110,7 +115,7 @@ function UglyThing(props){
 
 
             <button type="submit" className="button">Save</button>
-            <button className="button" onClick={() => setToggle(prevState => !prevState)}>Cancel</button>        
+            <button className="button" onClick={handleCancel}>Cancel</button>        
             </form>
             )}
         </>
