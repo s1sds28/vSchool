@@ -2,8 +2,7 @@ import React from "react";
 
 
 
-const StockCard = (props) => {
-  const { id, afterHours, close, from, high, low, open, preMarket, status, symbol, volume } = props
+const StockCard = ({id, afterHours, close, from, high, low, open, preMarket, status, symbol, volume}) => {
     return (
       <div className="card">
         <h2>STOCK DATA</h2>

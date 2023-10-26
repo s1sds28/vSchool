@@ -32,16 +32,7 @@ const ResearchPage = () => {
         <StockCard
           key={uniqueKey}
           id={uniqueKey}
-          afterHours= { review.afterHours }
-          close= { review.close }
-          from = { review.from }
-          high = { review.high }
-          low= { review.low }
-          open= { review.open }
-          preMarket= { review.preMarket }
-          status= { review.status }
-          symbol= { review.symbol }
-          volume= { review.volume }
+          {...review}
           />
       );
     });
