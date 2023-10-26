@@ -1,11 +1,19 @@
+import React from "react";
 
 
 
-
-const StockCard = ({ stockData }) => {
+const StockCard = (props) => {
+  const { id, afterHours, close, from, high, low, open, preMarket, status, symbol, volume } = props
     return (
-      <div className="stock-card">
-        <h2>STOCK DATA: { stockData } </h2>
+      <div className="card">
+        <h2>STOCK DATA</h2>
+        <p>{`id: ${id}`}</p>
+        <p>{`Date: ${from}`}</p>
+        <p>{`Ticker: ${symbol}`}</p>
+        <p>{`dayHigh: ${high}`}</p>
+        <p>{`dayLow: ${low}`}</p>
+
+
       </div>
     );
   };
