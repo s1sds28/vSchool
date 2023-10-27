@@ -15,9 +15,9 @@ function App(props) {
     <>
       <ThemeContextProvider>
         <div className='app-container'>
-          <Header></Header>
-          <MainContent></MainContent>
-          <Footer></Footer>
+          <Header/>
+          <MainContent/>
+          <Footer/>
         </div>
       </ThemeContextProvider>
     </>

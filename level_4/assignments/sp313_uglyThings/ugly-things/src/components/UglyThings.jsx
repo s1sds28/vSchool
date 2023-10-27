@@ -6,10 +6,13 @@ import axios from 'axios'
 
 import {v4 as uuidv4} from 'uuid'
 
+import { listContext } from '../Context'
+
 function UglyThings(props){
 
     // useState for saving ugly data
-    const [uglyData, setUglyData] = useState([])
+
+    const { uglyData, setUglyData } = useContext(listContext)
 
     const url = "https://api.vschool.io/steven/thing"
 

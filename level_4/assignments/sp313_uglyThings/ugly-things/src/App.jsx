@@ -11,9 +11,9 @@ function App() {
   
   return (
     <>
-      <Header></Header>
-      <Form></Form>
-      <UglyThings></UglyThings>
+      <Header/>
+      <Form/>
+      <UglyThings/>
     </>
   )
 }
