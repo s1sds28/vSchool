@@ -6,13 +6,10 @@ const StockCard = ({id, afterHours, close, from, high, low, open, preMarket, sta
     return (
       <div className="card">
         <h2>STOCK DATA</h2>
-        <p>{`id: ${id}`}</p>
         <p>{`Date: ${from}`}</p>
         <p>{`Ticker: ${symbol}`}</p>
         <p>{`dayHigh: ${high}`}</p>
         <p>{`dayLow: ${low}`}</p>
-
-
       </div>
     );
   };
