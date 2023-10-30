@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <h1>Welcome to Stock Research</h1>
-      <p>Get an overview of a stock without going to multiple websites.</p>
+      <p>Research a stock's previous high and low sales</p>
       <Link to="/about">
         <button style={{margin: "5px"}}>About</button>
       </Link>
