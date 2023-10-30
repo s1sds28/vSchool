@@ -14,6 +14,8 @@ function StockContextProvider(props){
     const yesterday = subDays(new Date(), 1);
     const formattedDate = format(yesterday, 'yyyy-MM-dd');
 
+    const [ date, setDate ] = useState("2023-10-27")
+
     const [ arrReviews, setArrReviews ] = useState([])
 
     const [ticker, setTicker] = useState("")
@@ -22,7 +24,7 @@ function StockContextProvider(props){
 
     //https://polygon.io/docs/stocks/get_v1_open-close__stocksticker___date   Daily Open/Close
 
-    const url = `https://api.polygon.io/v1/open-close/${ticker}/${formattedDate}?adjusted=true&apiKey=vzTzTFZejjwx0Ljay4iQCvX768Ts3Okr`
+    const url = `https://api.polygon.io/v1/open-close/${ticker}/${date}?adjusted=true&apiKey=vzTzTFZejjwx0Ljay4iQCvX768Ts3Okr`
 
 
     const fetchData = (e) => {
@@ -36,6 +38,8 @@ function StockContextProvider(props){
 
     return (
         <StockContext.Provider value={{
+            date,
+            setDate,
             ticker, 
             setTicker,
             setFormData,

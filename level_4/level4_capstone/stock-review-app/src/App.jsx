@@ -7,7 +7,6 @@ import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import ResearchPage from './components/ResearchPage';
 
-import { StockContextProvider } from './components/StockContext';
 
 function App() {
   return (
@@ -20,17 +19,14 @@ function App() {
         </nav>
       </header>
       <main>
-      <StockContextProvider>
         <Routes>
           <Route path="/" element={ <HomePage/> } />
           <Route path="/about" element={ <AboutPage/> } />
           <Route path="/research" element={ <ResearchPage/> } />
         </Routes>
-      </StockContextProvider>
       </main>
     </Router>
   );
 }
-
 
 export default App

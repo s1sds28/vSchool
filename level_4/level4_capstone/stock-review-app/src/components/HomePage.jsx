@@ -6,7 +6,7 @@ import './components.css'
 const HomePage = () => {
   return (
     <div className="home-page">
-      <h1>Welcome to Stock Review</h1>
+      <h1>Welcome to Stock Research</h1>
       <p>Get an overview of a stock without going to multiple websites.</p>
       <Link to="/about">
         <button style={{margin: "5px"}}>About</button>

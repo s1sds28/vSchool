@@ -10,11 +10,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ResearchPage = () => {
 
-  const { ticker, setTicker, formData, setFormData, fetchData, arrReviews } = React.useContext(StockContext)
+  const { date, setDate, ticker, setTicker, formData, setFormData, fetchData, arrReviews } = React.useContext(StockContext)
 
 
   const handleChange = e => {
     setTicker(e.target.value)
+  }
+
+  const handleDate = e => {
+    setDate(e.target.value)
   }
 
   const handleSubmit = (e) => {
@@ -23,6 +27,11 @@ const ResearchPage = () => {
     fetchData(e)
 
     }
+
+  const deleteAllCards = (e) => {
+    e.preventDefault()
+    console.log("deleteAllCards")
+  }
 
 
     const stockCards = arrReviews.map((review) => {
@@ -48,8 +57,16 @@ const ResearchPage = () => {
       value={ ticker }
       onChange={ handleChange }
       />
+      <input
+      name='data'
+      placeholder='Select Date'
+      type='date'
+      value= { date }
+      onChange={ handleDate }
+      />
       <button type='submit'>Fetch Data</button>
-      <p>STOCK CARDS</p>
+      <p>Examples: AAPL, MSFT, TSLA, PSEC, RTX</p>
+      <button onClick={ deleteAllCards }>Delete All Cards</button>
     </form>
     <section className='cards-list'>
       { stockCards }
