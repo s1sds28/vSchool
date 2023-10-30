@@ -32,10 +32,16 @@ function StockContextProvider(props){
             .then(res => {
                 setFormData(res.data);
                 setArrReviews(prev => [...prev, res.data]);
+                console.log(res)
             })
             .catch(err => console.log(err))
     }
 
+    const handleDeleteCard = (symbol, from) => {
+        const updatedStockCards = arrReviews.filter(card => (card.symbol !== symbol || card.from !== from))
+        setArrReviews(updatedStockCards)
+    };
+    
     return (
         <StockContext.Provider value={{
             date,
@@ -46,6 +52,8 @@ function StockContextProvider(props){
             formData,
             fetchData,
             arrReviews,
+            setArrReviews,
+            handleDeleteCard
         }}>
             {props.children}
         </StockContext.Provider>

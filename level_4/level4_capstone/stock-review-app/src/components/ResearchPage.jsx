@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ResearchPage = () => {
 
-  const { date, setDate, ticker, setTicker, formData, setFormData, fetchData, arrReviews } = React.useContext(StockContext)
+  const { date, setDate, ticker, setTicker, formData, setFormData, fetchData, arrReviews, setArrReviews, handleDeleteCard } = React.useContext(StockContext)
 
 
   const handleChange = e => {
@@ -23,20 +23,19 @@ const ResearchPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("Handle Submit")
     fetchData(e)
 
     }
 
   const deleteAllCards = (e) => {
     e.preventDefault()
-    console.log("deleteAllCards")
+    setArrReviews([])
   }
+  
 
 
     const stockCards = arrReviews.map((review) => {
       const uniqueKey = uuidv4()
-      console.log(review.symbol)
       return (
         <StockCard
           key={uniqueKey}
@@ -46,7 +45,6 @@ const ResearchPage = () => {
       );
     });
 
-  
   
   return (
     <>
