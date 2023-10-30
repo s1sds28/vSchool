@@ -20,6 +20,8 @@ function StockContextProvider(props){
 
     const [ formData, setFormData ] = useState("")
 
+    //https://polygon.io/docs/stocks/get_v1_open-close__stocksticker___date   Daily Open/Close
+
     const url = `https://api.polygon.io/v1/open-close/${ticker}/${formattedDate}?adjusted=true&apiKey=vzTzTFZejjwx0Ljay4iQCvX768Ts3Okr`
 
 
