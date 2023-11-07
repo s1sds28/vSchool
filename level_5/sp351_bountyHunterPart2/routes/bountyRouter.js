@@ -1,12 +1,13 @@
 const express = require("express")
 const bountyRouter = express.Router()
-const uuid = require("uuid").v4;
+// const uuid = require("uuid").v4;
+const {v4: uuidv4} = require('uuid')
 
 // Fake Data 
 const bounties = [
-    { firstName: "First Name", lastName: "Last Name", _id: uuid(), isLiving: true, bountyAmount: 1, type: "Sith" },
-    { firstName: "First Name", lastName: "Last Name", _id: uuid(), isLiving: true, bountyAmount: 1, type: "Sith" },
-    { firstName: "First Name", lastName: "Last Name", _id: uuid(), isLiving: true, bountyAmount: 1, type: "Sith" }    
+    { firstName: "1 Name", lastName: "Last Name", _id: "123", isLiving: true, bountyAmount: 1, type: "Sith" },
+    { firstName: "2 Name", lastName: "Last Name", _id: uuidv4(), isLiving: true, bountyAmount: 1, type: "Sith" },
+    { firstName: "3 Name", lastName: "Last Name", _id: uuidv4(), isLiving: true, bountyAmount: 1, type: "Sith" }    
 ]
 
 bountyRouter.route("/")
@@ -15,7 +16,7 @@ bountyRouter.route("/")
     })
     .post((req, res) => {
         const newBounty = req.body
-        newBounty._id = uuid()
+        newBounty._id = uuidv4()
         bounties.push(newBounty)
         res.send(`Successfully added ${newBounty.firstName} to the bounty array`)
     })
