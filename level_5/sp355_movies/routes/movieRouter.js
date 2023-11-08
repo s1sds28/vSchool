@@ -16,14 +16,15 @@ movieRouter.route("/")
     .get((req, res) => {
         res.send(movies)
     })
-//     .post((req, res) => {
-//         const newTodo = req.body
-//         newTodo._id = uuid()
-//         todos.push(newTodo)
-//         res.send(`Successfully added ${newTodo.name} to the todos array`)
-//     })
+    
+    .post((req, res) => {
+        const newMovie = req.body
+        newMovie._id = uuid()
+        movies.push(newMovie)
+        res.send(newMovie)
+    })
 
-// todoRouter.route("/:id")
+movieRouter.route("/:id")
 //     .get((req, res) => {
 //         const { id } = req.params;
 //         const todo = todos.find(todo => todo._id === id) 
@@ -34,6 +35,13 @@ movieRouter.route("/")
 //         }
 //     })
 //     .put((req, res) => {
+            // const movieId = req.params.movieId
+            // const updateObject = req.body
+            // const movieIndex = movies.findIndex(movie => movie._id === movieId)
+            // const updatedMovie = Object.assign(movies[movieIndex], updateObject)
+            // res.send(updatedMovie)
+
+// OR
 //         const { id } = req.params;
 //         const updatedTodo = req.body;
 
@@ -46,18 +54,23 @@ movieRouter.route("/")
 //             res.status(404).send(`Todo with ID ${id} not found`);
 //         }
 //     })
-//     .delete((req, res) => {
-//         const { id } = req.params;
+    .delete((req, res) => {
+        const movieId = req.params.id
+        const movieIndex = movies.findIndex(movie => movie._id === movieId)
+        movies.splice(movieIndex, 1)
+        res.send(`Successfully deleted movie ${movieId}`)
 
-//         const todoIndex = todos.findIndex(todo => todo._id === id);
 
-//         if (todoIndex !== -1) {
-//             const deletedTodo = todos.splice(todoIndex, 1)[0];
-//             res.send(`Successfully deleted todos with ID ${id}`);
-//         } else {
-//             res.status(404).send(`todo with ID ${id} not found`);
-//         }
-//     });
+        // OR
+        // const { id } = req.params;
+        // const movieIndex = movies.findIndex(movie => movie._id === id);
+        // if (movieIndex !== -1) {
+        //     const deletedMovie = movies.splice(movieIndex, 1)[0];
+        //     res.send(`Successfully deleted movie with ID ${id}`);
+        // } else {
+        //     res.status(404).send(`movie with ID ${id} not found`);
+        // }
+    });
 
 
 
