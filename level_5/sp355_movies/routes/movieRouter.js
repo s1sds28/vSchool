@@ -34,45 +34,25 @@ movieRouter.route("/:id")
 //             res.status(404).send(`Todo with id ${id} not found`)
 //         }
 //     })
-//     .put((req, res) => {
-            // const movieId = req.params.movieId
-            // const updateObject = req.body
-            // const movieIndex = movies.findIndex(movie => movie._id === movieId)
-            // const updatedMovie = Object.assign(movies[movieIndex], updateObject)
-            // res.send(updatedMovie)
+    .put((req, res) => {
+        const { id } = req.params;
+        const updatedMovie = req.body;
 
-// OR
-//         const { id } = req.params;
-//         const updatedTodo = req.body;
+        const movieIndex = movies.findIndex(movie => movie._id === id);
 
-//         const todoIndex = todos.findIndex(todo => todo._id === id);
-
-//         if (todoIndex !== -1) {
-//             todos[todoIndex] = { ...todos[todoIndex], ...updatedTodo };
-//             res.send(`Successfully updated todo with ID ${id}`);
-//         } else {
-//             res.status(404).send(`Todo with ID ${id} not found`);
-//         }
-//     })
+        if (movieIndex !== -1) {
+            movies[movieIndex] = { ...movies[movieIndex], ...updatedMovie };
+            res.send(`Successfully updated movie with ID ${id}`);
+        } else {
+            res.status(404).send(`Movie with ID ${id} not found`);
+        }
+    })
     .delete((req, res) => {
         const movieId = req.params.id
         const movieIndex = movies.findIndex(movie => movie._id === movieId)
         movies.splice(movieIndex, 1)
         res.send(`Successfully deleted movie ${movieId}`)
 
-
-        // OR
-        // const { id } = req.params;
-        // const movieIndex = movies.findIndex(movie => movie._id === id);
-        // if (movieIndex !== -1) {
-        //     const deletedMovie = movies.splice(movieIndex, 1)[0];
-        //     res.send(`Successfully deleted movie with ID ${id}`);
-        // } else {
-        //     res.status(404).send(`movie with ID ${id} not found`);
-        // }
     });
-
-
-
 
 module.exports = movieRouter; 
