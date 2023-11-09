@@ -25,28 +25,37 @@ movieRouter.route("/")
     })
 
 movieRouter.route("/:id")
-//     .get((req, res) => {
-//         const { id } = req.params;
-//         const todo = todos.find(todo => todo._id === id) 
-//         if (todo){
-//             res.send(todo)
-//         } else {
-//             res.status(404).send(`Todo with id ${id} not found`)
-//         }
-//     })
-    .put((req, res) => {
+
+    .get((req, res) => {
         const { id } = req.params;
-        const updatedMovie = req.body;
-
-        const movieIndex = movies.findIndex(movie => movie._id === id);
-
-        if (movieIndex !== -1) {
-            movies[movieIndex] = { ...movies[movieIndex], ...updatedMovie };
-            res.send(`Successfully updated movie with ID ${id}`);
+        const movie = movies.find(movie => movie._id === id) 
+        if (movie){
+            res.send(movie)
         } else {
-            res.status(404).send(`Movie with ID ${id} not found`);
+            res.status(404).send(`Todo with id ${id} not found`)
         }
     })
+
+    // .put((req, res) => {
+    //     const { id } = req.params;
+    //     const update = req.body;
+    //     const movieIndex = movies.findIndex(movie => movie._id === id);
+
+    //     if (movieIndex !== -1) {
+    //         const updatedMovie = movies[movieIndex] = { ...movies[movieIndex], ...update };
+    //         res.send(updatedMovie);
+    //     } else {
+    //         res.status(404).send(`Movie with ID ${id} not found`);
+    //     }
+    // })
+
+    .put(((req, res) => {
+        const movieId = req.params.id;
+        const updateObject = req.body
+        const movieIndex = movies.findIndex(movie => movie._id === movieId)
+        const updatedMovie = Object.assign(movies[movieIndex], updateObject)
+        res.send(updatedMovie)
+    }))
     .delete((req, res) => {
         const movieId = req.params.id
         const movieIndex = movies.findIndex(movie => movie._id === movieId)

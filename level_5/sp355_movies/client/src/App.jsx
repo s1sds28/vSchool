@@ -26,10 +26,19 @@ export default function App(){
     function deleteMovie(movieId){
         axios.delete(`/movie/${movieId}`)
             .then(res => {
-                setMovies(prev => prev.filter(movie => movie._id !== movieId) )
+                setMovies(prev => prev.filter(movie => movie._id !== movieId))
             })
             .catch(err => console.log(err))
     }
+
+    function editMovie(updates, movieId) {
+        axios.put(`/movie/${movieId}`, updates)
+            .then(res => {
+                setMovies(prevMovies => prevMovies.map(movie => movie._id !== movieId ? movie : res.data));
+            })
+            .catch(err => console.log(err));
+    }
+    
 
     useEffect(() => {
         getMovies()
@@ -38,7 +47,8 @@ export default function App(){
     return (
         <>
             <AddMovieForm 
-                addMovie={ addMovie }
+                submit={ addMovie }
+                btnText="Add Movie"
 
             />
             <div className='movie-container'>
@@ -46,6 +56,7 @@ export default function App(){
                     {...movie}
                     key={movie.title}
                     deleteMovie={deleteMovie}
+                    editMovie={editMovie}
                     />
                 )}
             </div>
