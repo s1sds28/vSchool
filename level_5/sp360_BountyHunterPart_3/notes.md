@@ -33,13 +33,21 @@ sp355_getRequest/client/src
 -create index.js
 -update index.js
 
-sp355_GetRequest/client/package.json
+client/package.json
 - add proxy -> ...},   "proxy": "http://localhost:9000"
 local
-// aioxs.get("movies")
+// axios.get("movies")
+// third party api
+// axios.get("http://example.com")
 
-third party api
-// aiios.get("http://example.com")
+# add src/App.jsx
+
+# in Client: npm install axios
+
+# mkdir src/components
+
+
+
 
 # client
 npm start
@@ -47,5 +55,3 @@ npm start
 # sp355_GetRequest
 nodemon server.js
 
-# client 
-npm install axios
