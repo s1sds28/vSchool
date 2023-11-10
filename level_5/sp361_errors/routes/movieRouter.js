@@ -14,6 +14,7 @@ const movies = [
 
 movieRouter.route("/")
     .get((req, res) => {
+        res.status(200)
         res.send(movies)
     })
     
@@ -21,7 +22,7 @@ movieRouter.route("/")
         const newMovie = req.body
         newMovie._id = uuid()
         movies.push(newMovie)
-        res.send(newMovie)
+        res.status(201).send(newMovie)
     })
 
 movieRouter.route("/:id")
@@ -31,9 +32,10 @@ movieRouter.route("/:id")
         if(!foundMovie){
             const error = new Error(`The item with id ${movieId} was not found`)
             // res.send(error) this is not DRY
+            res.status(500)
             return next(error)
         }
-        res.send(foundMovie)
+        res.status(200).send(foundMovie)
     })
     .put(((req, res) => {
         const movieId = req.params.id;
@@ -55,6 +57,7 @@ movieRouter.route("/search/genre")
         const genre = req.query.genre
         if(!genre){
             const error = new Error("You must provide a genre")
+            res.status(500)
             return next(error)
         }
         const filteredMovies = movies.filter(movie => movie.genre === genre)
