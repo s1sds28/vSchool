@@ -47,7 +47,7 @@ local
 # mkdir src/components
 
 
-To use: 
+To run app: 
 # client
 npm start
 
