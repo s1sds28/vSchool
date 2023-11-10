@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import axios from 'axios'
 
+import './styles.css'
+
 import Bounty from "./components/Bounty";
 import AddBountyForm from  './components/AddBountyForm'
 
@@ -32,20 +34,22 @@ export default function App() {
             .catch(err => console.log(err))
     }
 
-    function editBounty(updates, bountyId){
-        axios.put(`/bounty/${bountyId}`, updates)
-            // .then(res => {
-            //     console.log(res.data)
-            //     setBounties(prev => prev.map(bounty => {
-            //         return (bounty._id !== bountyId ? bounty : res.data)
-            //     }))}
-            // )
-            // .then(res => setBounties([]))
-            .then(res => {
-                setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data));
-            })
-            .catch(err => console.log(err))
+
+
+    async function editBounty(updates, bountyId) {
+        try {
+            const res = await axios.put(`/bounty/${bountyId}`, updates);
+            setBounties(prevBounties =>
+                prevBounties.map(bounty => (bounty._id !== bountyId ? bounty : res.data))
+            );
+            setBounties(prevBounties => [...prevBounties]);
+
+            console.log(res.data);
+        } catch (err) {
+            console.log(err);
+        }
     }
+    
 
     
 
@@ -61,7 +65,7 @@ export default function App() {
         />)
 
     return (
-    <>
+    <div>
         <AddBountyForm 
             submit={ addBounty }
             btnText="Add Bounty"
@@ -69,6 +73,6 @@ export default function App() {
         <div>
             { allBounties }
         </div>
-    </>
+    </div>
     )
 }
