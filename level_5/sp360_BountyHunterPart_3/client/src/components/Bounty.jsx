@@ -12,29 +12,34 @@ export default function Bounty(props){
         <div>
             {!editToggle ? 
             <>
-            this
             <h1>{firstName}</h1>
+            <h1>{lastName}</h1>
+            <p>{_id}</p>
+            <p>{isLiving}</p>
+            <p>{bountyAmount}</p>
+            <p>{type}</p>
             <button onClick={() => props.deleteBounty(_id)}>
                 Delete
             </button>
             <button
-                className=""
                 onClick={() => setEditToggle(prev => !prev)}>
                     Edit
-                </button>
+            </button>
             </>
             :
             <>
                 <AddBountyForm 
-                firstName={firstName}
-                lastName={lastName}
-                _id={_id}
-                isLiving={isLiving}
-                bountyAmount={bountyAmount}
-                type={type}
+                    firstName={firstName}
+                    lastName={lastName}
+                    _id={_id}
+                    isLiving={isLiving}
+                    bountyAmount={bountyAmount}
+                    type={type}
+                    submit={props.editBounty}
+                    btnText="Submit Edit"
                 />
                 <button onClick={() => setEditToggle(prev => !prev)}>
-                Cancel
+                    Cancel
                 </button>
             </>
             }

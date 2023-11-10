@@ -32,6 +32,21 @@ export default function App() {
             .catch(err => console.log(err))
     }
 
+    function editBounty(updates, bountyId){
+        axios.put(`/bounty/${bountyId}`, updates)
+            // .then(res => {
+            //     console.log(res.data)
+            //     setBounties(prev => prev.map(bounty => {
+            //         return (bounty._id !== bountyId ? bounty : res.data)
+            //     }))}
+            // )
+            // .then(res => setBounties([]))
+            .then(res => {
+                setBounties(prevBounties => prevBounties.map(bounty => bounty._id !== bountyId ? bounty : res.data));
+            })
+            .catch(err => console.log(err))
+    }
+
     
 
     useEffect(() => {
@@ -42,6 +57,7 @@ export default function App() {
         {...bounty}
         key={bounty._id}
         deleteBounty={deleteBounty}
+        editBounty={editBounty}
         />)
 
     return (

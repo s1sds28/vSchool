@@ -9,7 +9,7 @@ export default function AddBountyForm(props){
         bountyAmount: props.bountyAmount || "",
         type: props.type || ""
     }
-    
+
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e){
@@ -57,7 +57,7 @@ export default function AddBountyForm(props){
             onChange={ handleChange }
             placeholder="type"/>
 
-            <button>{ props.btnText }</button>
+            <button type="submit">{ props.btnText }</button>
             </form>
     )
 }

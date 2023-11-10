@@ -37,6 +37,7 @@ bountyRouter.route("/:id")
         const updateObject = req.body
         const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId)
         const updatedBounty = Object.assign(bounties[bountyIndex], updateObject)
+        console.log(updatedBounty)
         res.send(updatedBounty)
     }))
 
