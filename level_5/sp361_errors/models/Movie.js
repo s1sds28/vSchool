@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 // Movie Blueprint key: datatype
 
-const movieSchema = new Scheam({
+const movieSchema = new Schema({
     title: {
         type: String,
         required: true

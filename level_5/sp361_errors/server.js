@@ -3,6 +3,8 @@ const app = express()
 const morgan =  require("morgan")
 const mongoose = require('mongoose')
 
+mongoose.set('strictQuery', true);
+
 
 
 
@@ -13,14 +15,10 @@ app.use(morgan("dev"))
 // mongoosejs.com/docs/depreceations.html
 // Connent to DB // 
 
-mongoose.connect('mongodb://localhost:27017/moviesdb',
-{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndMondifty: true
-},
-() => console.log("Connected to the db")
+mongoose.connect('mongodb+srv://s1sds28:vSchoolDB@cluster0.htqkfgj.mongodb.net/',
+
+
+(err) => console.log("Connected to the db", err)
 )
 
 
