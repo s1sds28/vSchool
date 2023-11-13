@@ -59,4 +59,15 @@ movieRouter.put("/:movieId", (req, res, next) => {
     )
 })
 
+movieRouter.get("/search/genre", (req, res, next) => {
+    // req.query and req.params
+    Movie.find({ genre: req.query.genre}, (err, movies) => {
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(movies)
+    })
+})
+
 module.exports = movieRouter; 
