@@ -1,16 +1,17 @@
 const express = require("express")
 const movieRouter = express.Router()
-const uuid = require("uuid").v4;
+const Movie = require("../modles/movies.jsx")
+// const uuid = require("uuid").v4;
 
 // Fake data
 
-const movies = [
-    { title: "die hard", genre: "action", haveWatched: true, _id: "123" },
-    { title: "star wars IV", genre: "fantasy", haveWatched: false, _id: uuid() },
-    { title: "lion king", genre: "fantasy", haveWatched: false, _id: uuid() },
-    { title: "friday the 13th", genre: "horror", haveWatched: true, _id: uuid() }    
+// const movies = [
+//     { title: "die hard", genre: "action", haveWatched: true, _id: "123" },
+//     { title: "star wars IV", genre: "fantasy", haveWatched: false, _id: uuid() },
+//     { title: "lion king", genre: "fantasy", haveWatched: false, _id: uuid() },
+//     { title: "friday the 13th", genre: "horror", haveWatched: true, _id: uuid() }    
 
-]
+//]
 
 movieRouter.route("/")
     .get((req, res) => {
