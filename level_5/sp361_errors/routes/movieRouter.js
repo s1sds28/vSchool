@@ -36,7 +36,7 @@ movieRouter.delete("/:movieId", (req, res) => {
             res.status(500)
             return next(err)
         }
-        return res.status(201).send(`Successfully delelted item ${deletedItem.title} from the database`)
+        return res.status(201).send(`Successfully deleted item ${deletedItem.title} from the database`)
 
 
     })
