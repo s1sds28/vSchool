@@ -2,14 +2,35 @@
 
 function extractUniqueCharacters(strings) {
 
-    var result = []
-    for(let i = 0; i < strings.length; i++){
-        for(let j = 0; j < strings[i].length; j++){
-            result.push(strings[i][j])
-        }
-    }
-    return result.filter((value, index, array) => array.indexOf(value) === index);
+    // var result = strings.join("").split("")
+    // for(let i = 0; i < strings.length; i++){
+    //     for(let j = 0; j < strings[i].length; j++){
+    //         result.push(strings[i][j])
+    //     }
+    // }
+    return strings.join("").split("").filter((value, index, array) => array.indexOf(value) === index);
 }
+
+
+
+
+
+
+
+
+// function extractUniqueCharacters(strings) {
+//     const allCharacters = strings.join('');
+//     console.log(allCharacters)
+//     const uniqueCharacters = [];
+  
+//     allCharacters.split('').map(char => {
+//       if (!uniqueCharacters.includes(char)) {
+//         uniqueCharacters.push(char);
+//       }
+//     })
+//     return uniqueCharacters
+// }
+
 
 const words = ['apple', 'banana', 'cherry'];
 const uniqueChars = extractUniqueCharacters(words);
