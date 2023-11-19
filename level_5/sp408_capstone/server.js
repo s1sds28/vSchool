@@ -14,6 +14,8 @@ mongoose.connect("mongodb+srv://s1sds28:FHcQQhMkoKBKdT9j@cluster0.rblfy6t.mongod
 
 // Routes
 app.use("/bills", require("./routes/billRouter.js"))
+app.use("/billProvider", require("./routes/billProviderRouter.js"))
+
 
 // error handler
 app.use((err, req, res, next) => {
