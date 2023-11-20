@@ -5,6 +5,9 @@ const billSchema = new Schema({
     issueDate: {
         type: Date
     },
+    amount: {
+        type: Number
+    },
     isPaid: {
         type: Boolean,
         required: true
