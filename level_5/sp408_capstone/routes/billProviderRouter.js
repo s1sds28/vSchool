@@ -3,7 +3,6 @@ const billProviderRouter = express.Router()
 const BillProvider = require('../models/BillProvider.js')
 const Bill = require('../models/Bill.js')
 
-
 // Get all Bills
 billProviderRouter.get("/", (req, res, next) => {
     BillProvider.find((err, billProviders) => {
@@ -61,7 +60,6 @@ billProviderRouter.delete("/:billProviderId", async (req, res, next) => {
         res.status(500).json({ error: error.message });
       }
     });
-    
 
 // Update one
 billProviderRouter.put("/:billProviderId", (req, res, next) => {
@@ -79,7 +77,7 @@ billProviderRouter.put("/:billProviderId", (req, res, next) => {
     )
     });
 
-
+// Search by catagory
 billProviderRouter.get("/search/catagory", (req, res, next) => {
     BillProvider.find({ catagory: req.query.catagory }, (err, billProvider) => {
         if (err) {
