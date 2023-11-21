@@ -3,6 +3,7 @@ import BillProvider from '../components/BillProvider';
 import axios from 'axios';
 
 const TrackBills = () => {
+  // Move to Context
   const [billProviders, setBillProviders] = useState([]);
 
   const [ bills, setBills ] = useState([])

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Bill = ({ bill }) => {
-  // EDIT TOGGLE, ONCHANGE, EDIT STATE
+  // TOGGLE, ONCHANGE, EDIT STATE
   console.log("BILL", bill)
   return (
     <div>
