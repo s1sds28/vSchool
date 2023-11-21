@@ -9,7 +9,7 @@ const billProviderSchema = new Schema({
     frequency: {
         type: String
     },
-    catagory: {
+    category: {
         type: String
     }
     

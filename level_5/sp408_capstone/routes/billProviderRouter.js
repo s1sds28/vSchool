@@ -68,6 +68,7 @@ billProviderRouter.put("/:billProviderId", (req, res, next) => {
         req.body,
         { new: true },
         (err, updatedBillProvider) => {
+            console.log(updatedBillProvider)
             if(err){
                 res.status(500)
                 return next(err)
@@ -77,9 +78,9 @@ billProviderRouter.put("/:billProviderId", (req, res, next) => {
     )
     });
 
-// Search by catagory
-billProviderRouter.get("/search/catagory", (req, res, next) => {
-    BillProvider.find({ catagory: req.query.catagory }, (err, billProvider) => {
+// Search by category
+billProviderRouter.get("/search/category", (req, res, next) => {
+    BillProvider.find({ category: req.query.category }, (err, billProvider) => {
         if (err) {
             res.status(500);
             return next(err);
