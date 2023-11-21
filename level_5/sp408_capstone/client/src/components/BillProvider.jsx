@@ -3,6 +3,7 @@ import Bill from './Bill';
 
 const BillProvider = ({ provider, bills }) => {
   const providerBills = bills.map(bill => (<Bill key={bill._id} bill={bill}></Bill>))
+  // EDIT STATE BILL PROVIDER
   return (
     <div>
       <p>Bill Provider component

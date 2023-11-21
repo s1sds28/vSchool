@@ -8,7 +8,7 @@ const cors = require('cors')
 app.use(express.json())
 app.use(morgan('dev'))
 
-// middleware to allow cross-origin requests
+// Middleware to allow cross-origin requests
 app.use(cors())
 
 // DB connect

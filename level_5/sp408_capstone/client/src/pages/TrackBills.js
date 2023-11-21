@@ -35,10 +35,6 @@ const TrackBills = () => {
     <div>
       <p>BILL PROVIDER page</p>
       { allBillProviders }
-      {/* <BillProvider />
-      {billProviders.map(provider => (
-        <BillProvider key={ provider._id } provider={ provider } />
-      ))} */}
     </div>
   );
 };
