@@ -33,7 +33,7 @@ function BillContextProvider(props){
             billProviders,
             setBillProviders,
             bills,
-            setBills
+            setBills,
         }}>
             { props.children }
         </BillContext.Provider>
