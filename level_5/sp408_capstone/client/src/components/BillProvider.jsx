@@ -4,6 +4,11 @@ import Bill from './Bill';
 import axios from 'axios';
 
 function BillProvider({ provider, bills, setBills }) {
+
+
+  const { setBillProviders } = useContext(BillContext);
+
+
   const [displayBills, setDisplayBills] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProvider, setEditedProvider] = useState({ ...provider });
@@ -18,7 +23,6 @@ function BillProvider({ provider, bills, setBills }) {
     paymentStatus: "",
     billProvider: provider._id
   })
-  // console.log(arrayBills)
 
   const allBills = arrayBills.map(bill => (
     <Bill key={bill._id} bill={bill} />
@@ -35,6 +39,7 @@ function BillProvider({ provider, bills, setBills }) {
       [name]: value,
     }))
   }
+
   const handleSaveBill = () => {
     const { issueDate, amount, isPaid, dueDate, paymentStatus, billProvider } = newBill;
     const newBillBody = { issueDate, amount, isPaid, dueDate, paymentStatus, billProvider };
@@ -48,7 +53,6 @@ function BillProvider({ provider, bills, setBills }) {
         setIsAddingBill(false);
       })
       .catch(error => console.error(error));
-
   }
 
   const handleEditToggle = () => {
@@ -62,8 +66,6 @@ function BillProvider({ provider, bills, setBills }) {
       [name]: value,
     }));
   };
-
-
 
   const handleSaveChanges = () => {
     // Extract only the desired properties from editedProvider
@@ -83,6 +85,28 @@ function BillProvider({ provider, bills, setBills }) {
     setIsEditing(!isEditing)
     setEditedProvider({ ...provider})
   }
+
+  const handleDeleteProvider = async () => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this provider?");
+    if (!isConfirmed) {
+      return;
+    }
+  
+    const url = `http://localhost:9000/billProvider/${provider._id}`;
+  
+    try {
+      const response = await axios.delete(url);
+  
+      console.log(`Provider with ID ${provider._id} deleted successfully.`);
+  
+      setBillProviders(prevProviders => prevProviders.filter(p => p._id !== provider._id));
+  
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error deleting provider:", error);
+    }
+  };
+  
 
   return (
     <div>
@@ -128,6 +152,7 @@ function BillProvider({ provider, bills, setBills }) {
           <p>Frequency: {editedProvider.frequency}</p>
           <p>Category: {editedProvider.category}</p>
           <button type="button" onClick={handleEditToggle}>Edit</button>
+          <button type="button" onClick={handleDeleteProvider}>Delete</button>
           <button type="button" onClick={() => (setIsAddingBill(!isAddingBill))}>Add Bill</button>
           <button type="button" onClick={() => setDisplayBills(!displayBills)}>Display Bills</button>
 

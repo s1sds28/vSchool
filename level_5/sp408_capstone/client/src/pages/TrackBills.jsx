@@ -32,7 +32,6 @@ const TrackBills = () => {
   // Function to handle form submission
   const handleAddProvider = () => {
     const url = 'http://localhost:9000/billProvider'; // Adjust the URL based on your server endpoint
-
     axios.post(url, newProviderForm)
       .then(response => {
         // Update the billProviders state with the new provider
