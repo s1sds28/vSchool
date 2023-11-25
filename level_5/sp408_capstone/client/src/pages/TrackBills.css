@@ -1,0 +1,55 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form horizontally */
+  justify-content: center;
+  max-width: 400px;
+  margin: auto;
+}
+
+.provider-form {
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 16px;
+  width: 25%;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 16px;
+  width: 50%; /* Make all input boxes the same width */
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: 100%; /* Make the button take up the full width */
+  margin-top: 8px; /* Add some space between the button and the inputs */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.bill-provider {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.display-providers-button {
+  background-color: #28a745;
+  color: #fff;
+  margin-top: 16px;
+  width: 100%; /* Make the button take up the full width */
+}
+
+.display-providers-button:hover {
+  background-color: #218838;
+}

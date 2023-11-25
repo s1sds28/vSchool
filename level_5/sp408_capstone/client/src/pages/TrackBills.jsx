@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import { BillContext } from '../Context';
 
+import './TrackBills.css'
+
 const TrackBills = () => {
   const { billProviders, setBillProviders, bills, setBills } = useContext(BillContext);
   const [displayProviders, setDisplayProviders] = useState(false);
@@ -50,7 +52,7 @@ const TrackBills = () => {
     <>
     <p>BILL PROVIDER page</p>
     <div>
-      <form>
+      <form className='provider-form'>
         <label>
           Name:
           <input
@@ -78,7 +80,7 @@ const TrackBills = () => {
             onChange={handleInputChange}
           />
         </label>
-        <button type='button' onClick={handleAddProvider}>
+        <button type='button' onClick={handleAddProvider} className='display-providers-button'>
           Add Provider
         </button>
         <button type='button' onClick={() => setDisplayProviders(!displayProviders)}>

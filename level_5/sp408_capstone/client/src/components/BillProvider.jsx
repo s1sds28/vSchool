@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { BillContext } from '../Context';
 import Bill from './Bill';
 import axios from 'axios';
+import './BillProvider.css'
 
 function BillProvider({ provider, bills, setBills }) {
 
@@ -108,10 +109,10 @@ function BillProvider({ provider, bills, setBills }) {
   
 
   return (
-    <div>
+    <div className='bill-provider'>
       <p>BILL PROVIDER COMPONENT</p>
       {isEditing ? (
-        <form>
+        <form >
           <label>
             Name:
             <input

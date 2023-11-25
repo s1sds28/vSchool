@@ -1,0 +1,43 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form horizontally */
+    max-width: 400px;
+    margin: auto;
+    
+  }
+
+.bill-provider {
+    background-color: grey;
+    border-radius: 5px;
+    padding: 16px;
+    width: 25%;
+    margin: auto;
+  }
+  
+  .bill-details {
+    margin-bottom: 8px;
+  }
+  
+  .bill-amount {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .bill-due-date {
+    color: #888;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
