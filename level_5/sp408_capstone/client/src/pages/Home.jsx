@@ -4,8 +4,7 @@ export default function Home() {
   
   return (
       <div style={{ padding: 20 }}> 
-          <h2>Home View - 1</h2>
-        { <p>Home View</p> }
+          <h1>This app helps us keep track of Accounts and Bills</h1>
       </div>
     );
 }
