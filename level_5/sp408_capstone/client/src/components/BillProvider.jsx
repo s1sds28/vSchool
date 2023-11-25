@@ -25,7 +25,7 @@ function BillProvider({ provider, bills, setBills }) {
   })
 
   const allBills = arrayBills.map(bill => (
-    <Bill key={bill._id} bill={bill} />
+    <Bill key={bill._id} bill={bill} setArrayBills={setArrayBills} />
     ));
 
   const handleAddBillCancel = () => {
@@ -43,7 +43,6 @@ function BillProvider({ provider, bills, setBills }) {
   const handleSaveBill = () => {
     const { issueDate, amount, isPaid, dueDate, paymentStatus, billProvider } = newBill;
     const newBillBody = { issueDate, amount, isPaid, dueDate, paymentStatus, billProvider };
-    // console.log(setBills)
     const url = `http://localhost:9000/bills`;
 
     axios.post(url, newBillBody)
@@ -178,23 +177,7 @@ function BillProvider({ provider, bills, setBills }) {
         placeholder='Amount'
       />
     </label>
-    <label>
-      Is Paid:
-      <input
-        type='radio'
-        name="isPaid"
-        checked={newBill.isPaid}
-        onChange={() => handleAddBillChange({ target: { name: "isPaid", value: !newBill.isPaid } }, 'isPaid')}
-      />
-      Yes
-      <input
-        type='radio'
-        name="isPaid"
-        checked={!newBill.isPaid}
-        onChange={() => handleAddBillChange({ target: { name: "isPaid", value: !newBill.isPaid } }, 'isPaid')}
-      />
-      No
-    </label>
+
     <label>
       dueDate:
       <input
