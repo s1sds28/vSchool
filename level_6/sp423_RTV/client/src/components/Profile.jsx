@@ -9,8 +9,6 @@ export default function Profile(){
   } = useContext(UserContext)
 
   return (
-    <div className="profile">
-      <p>Hello World</p>
-    </div>
+    <p>Profile component</p>
   )
 }
