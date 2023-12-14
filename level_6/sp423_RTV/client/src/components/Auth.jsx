@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm.jsx'
 import { UserContext } from '../context/UserProvider.jsx'
 
-
-
 const initInputs = { username: "", password: "" }
 
 export default function Auth(){
