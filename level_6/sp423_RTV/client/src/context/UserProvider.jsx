@@ -58,15 +58,14 @@ export default function UserProvider(props) {
       .catch(err => console.log(err.response.data.errMsg))
   }
 
-
-
   function logout(){
+    console.log("function: logout")
     localStorage.removeItem("token")
     localStorage.removeItem("user")
     setUserState({
       user: {},
       token: "",
-      todos: []
+      issues: []
     })
   }
 
