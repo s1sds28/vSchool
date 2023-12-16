@@ -5,10 +5,6 @@ export const UserContext = React.createContext();
 
 const userAxios = axios.create();
 
-// const userAxios = axios.create({
-//   baseURL: 'http://localhost:9000', // Replace with your server's URL
-// });
-
 userAxios.interceptors.request.use(config => {
   const token = localStorage.getItem("token")
   config.headers.Authorization = `Bearer ${token}`
@@ -67,6 +63,16 @@ export default function UserProvider(props) {
       token: "",
       issues: []
     })
+  }
+
+  function addIssue(newIssue){
+    user.Axios.post("/api/issue", newIssue)
+      .then(res => {
+        setUserState(prevState=> ({
+          ...prevState,
+          issues: [...prevState.issues, res.data]
+        }))
+      })
   }
 
   return (
