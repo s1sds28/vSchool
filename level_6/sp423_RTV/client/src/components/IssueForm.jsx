@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const initInputs = {
     title: "",
     description: "",
-    completed: false,
     imgUrl: "",
 }
 
@@ -21,15 +20,13 @@ export default function IssueForm(props){
 
     function handleSubmit(e){
         e.preventDefault()
-        // addIssue(inputs)
+        addIssue(inputs)
         setInputs(initInputs)
     }
 
-
-
 const { title, description, completed, imgUrl } = inputs
 return (
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
         <input 
             type="text" 
             name="title" 
@@ -49,6 +46,6 @@ return (
             onChange={handleChange} 
             placeholder="Image Url"/>
         <button>Add Issue</button>
-        </form>
+    </form>
     )
 }
