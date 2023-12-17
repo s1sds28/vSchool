@@ -16,7 +16,7 @@ export default function Profile(){
   return (
     <div className='profile'>
     <h1>Profile component: Welcome { username }!</h1>
-    <h3>Add a Issue</h3>
+    <h3>Add an Issue</h3>
     <IssueForm addIssue={addIssue}/>
     <h3>Your Issues</h3>
     <IssueList issues={ issues }/>
