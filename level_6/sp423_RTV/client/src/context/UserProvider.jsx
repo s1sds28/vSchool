@@ -34,7 +34,7 @@ export default function UserProvider(props) {
           token
         }))
       })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch(err => handleAuthErr(err.response.data.errMsg))
   }
 
 
