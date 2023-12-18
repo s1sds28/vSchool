@@ -14,4 +14,21 @@ commentRouter.get("/", (req, res, next) => {
     });
 });
 
+// Post a comment
+commentRouter.post("/:issueId", (req, res, next) => {
+    req.body.user = req.auth._id
+    req.body.issue = req.params.issueId 
+    const newComment = new Comment(req.body);
+
+    newComment.save((err, savedComment) => {
+        if(err){
+            res.status(500)
+            return next(err);
+        }
+        return res.status(201).send(savedComment)
+    });
+});
+
+
+
 module.exports = commentRouter;
