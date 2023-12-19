@@ -9,12 +9,11 @@ const issueSchema = new Schema({
   description: {
     type: String
   },
-  completed: {
-    type: Boolean,
-    default: false
+  upVotes: {
+    type: Array
   },
-  imgUrl: {
-    type: String,
+  downVotes: {
+    type: Array
   },
   user: {
     type: Schema.Types.ObjectId,
