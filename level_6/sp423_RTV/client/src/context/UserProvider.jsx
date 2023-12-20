@@ -102,15 +102,22 @@ export default function UserProvider(props) {
   }
 
   function getAllComments() {
-    console.log("UserProvider get all comments")
     userAxios.get("/api/comment")
       .then(res => {
-        setComments(prevState => [
-          ...prevState,
+        setComments(
           res.data
-        ]);
+        );
+        
       })
       .catch(err => console.log(err.response.data.errMsg));
+  }
+
+  function postNewComment(newComment, issueId){
+    axios.post(`/api/comments/${issueId}`, newComment)
+      .then(res => {
+        setComments(prev => [...prev, res.data]);
+      })
+      .catch(err => console.log(err));
   }
   
   return (
@@ -123,6 +130,7 @@ export default function UserProvider(props) {
         addIssue,
         resetAuthErr,
         getAllComments,
+        postNewComment,
         comments,
       }}
     >
