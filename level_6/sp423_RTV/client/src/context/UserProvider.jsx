@@ -20,6 +20,7 @@ export default function UserProvider(props) {
   };
 
   const [userState, setUserState] = useState(initState);
+  const [comments, setComments] = useState([])
 
 
   function signup(credentials){
@@ -100,6 +101,18 @@ export default function UserProvider(props) {
       })
   }
 
+  function getAllComments() {
+    console.log("UserProvider get all comments")
+    userAxios.get("/api/comment")
+      .then(res => {
+        setComments(prevState => [
+          ...prevState,
+          res.data
+        ]);
+      })
+      .catch(err => console.log(err.response.data.errMsg));
+  }
+  
   return (
     <UserContext.Provider
       value={{
@@ -108,7 +121,9 @@ export default function UserProvider(props) {
         login,
         logout,
         addIssue,
-        resetAuthErr
+        resetAuthErr,
+        getAllComments,
+        comments,
       }}
     >
       {props.children}

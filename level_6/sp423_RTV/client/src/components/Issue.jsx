@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/UserProvider";
 
+export default function Issue(props) {
+  const { comments } = useContext(UserContext);
+  const { _id } = props;
 
-export default function Issue(props){
-    const { title, description, imgUrl, _id } = props
-    return(
-        <div className="issue">
-            <h1>{ title }</h1>
-            <h3>{ description }</h3>
-            <img src={imgUrl} alt="issue image" width={300}/>
-        </div>
-    )
+  // Check if comments have the expected structure before filtering
+  const filteredComments = comments.filter(comment => comment.issue === _id);
+
+  console.log(comments);
+  console.log(_id);
+  console.log("filtered comments:", filteredComments)
+
+  return (
+    <div className="issue">
+      <h1>{props.title}</h1>
+      <h3>{props.description}</h3>
+      <h5>test</h5>
+    </div>
+  );
 }
+
+// return (
+//     <div className="issue-list">
+//         { issues.map(issue => <Issue {...issue} key={issue._id}/>) }
+//     </div>
+// )

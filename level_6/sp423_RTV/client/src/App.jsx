@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx'
 import Auth from './components/Auth.jsx'
@@ -8,7 +8,11 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import { UserContext } from './context/UserProvider.jsx'
 
 export default function App(){
-  const { token, logout } = useContext(UserContext)
+  const { token, logout, getAllComments } = useContext(UserContext)
+  useEffect(()=>{
+    console.log("app useEffect get all comments")
+    getAllComments();
+  }, [])
   return (
     <Router>
     <div className="app">

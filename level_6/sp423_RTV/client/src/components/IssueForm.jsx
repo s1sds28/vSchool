@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const initInputs = {
     title: "",
     description: "",
-    imgUrl: "",
 }
 
 export default function IssueForm(props){
@@ -32,19 +31,15 @@ return (
             name="title" 
             value={title} 
             onChange={handleChange} 
-            placeholder="Title"/>
+            placeholder="Title"
+        />
         <input 
             type="text" 
             name="description" 
             value={description} 
             onChange={handleChange} 
-            placeholder="Description"/>
-        <input 
-            type="text" 
-            name="imgUrl" 
-            value={imgUrl} 
-            onChange={handleChange} 
-            placeholder="Image Url"/>
+            placeholder="Description"
+        />
         <button>Add Issue</button>
     </form>
     )

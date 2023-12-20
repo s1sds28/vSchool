@@ -1,0 +1,56 @@
+/* Style for the issue container */
+.issue {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the title of the issue */
+  .issue h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for the description of the issue */
+  .issue h3 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the upVotes and downVotes buttons */
+  .issue .votes-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Style for the individual vote button */
+  .issue .votes-container button {
+    background-color: #4caf50; /* Green color for upVotes */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .issue .votes-container button.down-vote {
+    background-color: #f44336; /* Red color for downVotes */
+  }
+  
+  /* Style for the comments container */
+  .comments-container {
+    margin-top: 20px;
+  }
+  
+  /* Style for each comment */
+  .comment {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the comment text */
+  .comment p {
+    margin: 0;
+  }
+  
