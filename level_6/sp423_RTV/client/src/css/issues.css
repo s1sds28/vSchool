@@ -1,8 +1,13 @@
 /* Style for the issue container */
 .issue {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  border: 1px solid #3339;
+  background-color: #aaa9;
+  padding: 16px;
+  border-radius: 5px;
+  width: 300px;
   }
   
   /* Style for the title of the issue */
@@ -40,11 +45,19 @@
   /* Style for the comments container */
   .comments-container {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    border: 1px solid #3339;
+    background-color: #aaa9;
+    padding: 16px;
+    border-radius: 5px;
+    width: 100%;
   }
   
   /* Style for each comment */
   .comment {
-    border: 1px solid #eee;
+    border: 1px solid #3339;
     padding: 10px;
     margin-bottom: 10px;
   }

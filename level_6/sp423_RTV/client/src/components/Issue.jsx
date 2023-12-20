@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
 
+import "../css/issues.css"
 import CommentList from "./CommentList";
 
 export default function Issue(props) {
@@ -13,10 +14,17 @@ export default function Issue(props) {
   console.log("filtered comments:", filteredComments)
 
   return (
-    <div className="issue">
-      <h1>{props.title}</h1>
-      <h3>{props.description}</h3>
-      <CommentList filteredComments={ filteredComments }/>
-    </div>
+    <>
+      <form className="issue">
+        <h1>{props.title}</h1>
+        <h3>{props.description}</h3>
+        <div className="votes-container"><button>Up Vote</button></div>
+        <div className="down-vote"><button>DownVote</button></div>
+      
+        <div className="comments-container">
+          <CommentList filteredComments={ filteredComments }/>
+        </div>
+      </form>
+    </>
   );
 }

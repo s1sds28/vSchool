@@ -23,7 +23,7 @@ export default function IssueForm(props){
         setInputs(initInputs)
     }
 
-const { title, description, completed, imgUrl } = inputs
+const { title, description } = inputs
 return (
     <form onSubmit={handleSubmit}>
         <input 

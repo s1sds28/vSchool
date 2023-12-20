@@ -4,8 +4,8 @@ import { UserContext } from "../context/UserProvider";
 export default function Comment(props) {
 
     return (
-    <div>
+    <form className="comment">
         <p> {props.text}</p>
-    </div>
+    </form >
     );
 }
