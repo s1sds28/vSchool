@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import IssueForm from './IssueForm.jsx'
 import IssueList from './IssueList.jsx'
 
@@ -11,7 +11,12 @@ export default function Profile(){
     },
     addIssue,
     issues,
+    getUserIssues,
   } = useContext(UserContext)
+
+  useEffect(() => {
+    getUserIssues()
+    }, [])
 
   return (
     <div className='profile'>

@@ -45,7 +45,6 @@ export default function UserProvider(props) {
         const { user, token } = res.data
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
-        getUserIssues()
         setUserState(prevUserState => ({
           ...prevUserState,
           user,
@@ -56,7 +55,6 @@ export default function UserProvider(props) {
   }
 
   function logout(){
-    console.log("function: logout")
     localStorage.removeItem("token")
     localStorage.removeItem("user")
     setUserState({
@@ -116,11 +114,11 @@ export default function UserProvider(props) {
     return userAxios.post(`/api/comment/${issueId}`, newComment)
       .then(res => {
         setComments(prev => [...prev, res.data]);
-        return res.data; // Return the data if needed
+        return res.data;
       })
       .catch(err => {
         console.log(err);
-        throw err; // Propagate the error to be caught in the calling code
+        throw err;
       });
   }
   
@@ -138,6 +136,7 @@ export default function UserProvider(props) {
         postNewComment,
         comments,
         setComments,
+        getUserIssues
       }}
     >
       {props.children}

@@ -16,6 +16,7 @@ export default function Issue(props) {
       <form className="issue">
         <h1>{props.title}</h1>
         <h3>{props.description}</h3>
+        
         <div className="votes-container"><button>Up Vote</button></div>
         <div className="down-vote"><button>DownVote</button></div>
       

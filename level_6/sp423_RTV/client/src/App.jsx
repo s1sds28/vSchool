@@ -17,7 +17,6 @@ export default function App() {
   const { token, logout, getAllComments } = useContext(UserContext);
 
   useEffect(() => {
-    console.log("app useEffect get all comments");
     getAllComments();
   }, []);
 
