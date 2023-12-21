@@ -6,7 +6,7 @@ import CommentList from "./CommentList";
 
 export default function Issue(props) {
   const { comments } = useContext(UserContext);
-  const { _id } = props;
+  const { _id, upVotes, downVotes } = props;
 
   // Check if comments have the expected structure before filtering
   const filteredComments = comments.filter(comment => comment.issue === _id);
@@ -17,8 +17,17 @@ export default function Issue(props) {
         <h1>{props.title}</h1>
         <h3>{props.description}</h3>
         
-        <div className="votes-container"><button>Up Vote</button></div>
-        <div className="down-vote"><button>DownVote</button></div>
+
+        <div className="vote-container">
+          <div>
+            <button className="up-vote">Up Vote</button>
+            <span>Upvotes: {upVotes.length}</span>
+          </div>
+          <div>
+            <button className="down-vote">DownVote</button>
+            <span>Downvotes: {downVotes.length}</span>
+          </div>
+        </div>
       
         <div className="comments-container">
           <CommentList filteredComments={ filteredComments } issue_Id={_id}/>

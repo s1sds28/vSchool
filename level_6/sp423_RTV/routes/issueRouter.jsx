@@ -67,4 +67,68 @@ issueRouter.put("/:issueId", (req, res, next) => {
   )
 })
 
+// upvote
+
+issueRouter.post("/:issueId/upvote", async (req, res, next) => {
+  const userId = req.auth._id;
+  const issueId = req.params.issueId; // Corrected variable name
+
+  try {
+    // Find the issue by ID
+    const issue = await Issue.findById(issueId);
+
+    if (!issue) {
+      return res.status(404).json({ message: 'Issue not found' });
+    }
+
+    // Check if the user's ID is already in the upVotes array
+    if (!issue.upVotes.includes(userId)) {
+      // Add user's ID to the upVotes array
+      issue.upVotes.push(userId);
+
+      // Save the updated issue
+      await issue.save();
+
+      return res.status(200).json({ message: 'Upvoted successfully' });
+    }
+
+    return res.status(400).json({ message: 'User already upvoted this issue' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// down vote
+
+issueRouter.post("/:issueId/downvote", async (req, res, next) => {
+  const userId = req.auth._id;
+  const issueId = req.params.issueId; // Corrected variable name
+
+  try {
+    // Find the issue by ID
+    const issue = await Issue.findById(issueId);
+
+    if (!issue) {
+      return res.status(404).json({ message: 'Issue not found' });
+    }
+
+    // Check if the user's ID is already in the upVotes array
+    if (!issue.downVotes.includes(userId)) {
+      // Add user's ID to the downVotes array
+      issue.downVotes.push(userId);
+
+      // Save the updated issue
+      await issue.save();
+
+      return res.status(200).json({ message: 'downVote successfully' });
+    }
+
+    return res.status(400).json({ message: 'User already downVoted this issue' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 module.exports = issueRouter;

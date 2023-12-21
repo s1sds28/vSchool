@@ -23,25 +23,32 @@
     margin-bottom: 10px;
   }
   
-  /* Style for the upVotes and downVotes buttons */
-  .issue .votes-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  /* Style for the individual vote button */
-  .issue .votes-container button {
-    background-color: #4caf50; /* Green color for upVotes */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .issue .votes-container button.down-vote {
-    background-color: #f44336; /* Red color for downVotes */
-  }
-  
+/* Style for the upVotes and downVotes buttons */
+.issue .vote-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style for the individual vote button */
+.issue .vote-container button {
+  width: 100px; /* Adjust the width as needed */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.down-vote {
+  background-color: #f44336; /* Red color for downVotes */
+}
+
+.up-vote {
+  background-color: #4caf50; /* Green color for upVotes */
+}
+
+/* Align text to the right */
+.issue .vote-container span {
+  margin-left: auto;
+}
   /* Style for the comments container */
   .comments-container {
     margin-top: 20px;
