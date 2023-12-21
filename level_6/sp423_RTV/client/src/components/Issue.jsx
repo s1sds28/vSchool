@@ -11,8 +11,6 @@ export default function Issue(props) {
   // Check if comments have the expected structure before filtering
   const filteredComments = comments.filter(comment => comment.issue === _id);
 
-  console.log("filtered comments:", filteredComments)
-
   return (
     <>
       <form className="issue">
@@ -22,7 +20,7 @@ export default function Issue(props) {
         <div className="down-vote"><button>DownVote</button></div>
       
         <div className="comments-container">
-          <CommentList filteredComments={ filteredComments }/>
+          <CommentList filteredComments={ filteredComments } issue_Id={_id}/>
         </div>
       </form>
     </>

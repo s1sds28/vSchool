@@ -10,7 +10,7 @@ export default function Profile(){
       username
     },
     addIssue,
-    issues
+    issues,
   } = useContext(UserContext)
 
   return (

@@ -112,13 +112,18 @@ export default function UserProvider(props) {
       .catch(err => console.log(err.response.data.errMsg));
   }
 
-  function postNewComment(newComment, issueId){
-    axios.post(`/api/comments/${issueId}`, newComment)
+  function postNewComment(newComment, issueId) {
+    return userAxios.post(`/api/comment/${issueId}`, newComment)
       .then(res => {
         setComments(prev => [...prev, res.data]);
+        return res.data; // Return the data if needed
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        throw err; // Propagate the error to be caught in the calling code
+      });
   }
+  
   
   return (
     <UserContext.Provider
@@ -132,6 +137,7 @@ export default function UserProvider(props) {
         getAllComments,
         postNewComment,
         comments,
+        setComments,
       }}
     >
       {props.children}

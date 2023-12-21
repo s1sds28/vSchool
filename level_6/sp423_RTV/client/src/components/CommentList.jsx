@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import CommentForm from "./CommentForm.jsx";
 import Comment from "./Comment.jsx";
 
 export default function CommentList(props) {
-  const { filteredComments } = props;
+  const { filteredComments, issue_Id } = props;
+  const [toggle, setToggle] = useState(false);
+
+  function displayCommentForm(e){
+    e.preventDefault()
+    setToggle(prev => !prev)
+  }
+
+  console.log("Comment list", issue_Id)
 
   return (
     <div>
-      <p>Comment list</p>
+      <button onClick={displayCommentForm}>Add Comment</button>
+      {toggle && <CommentForm issue_Id={ issue_Id }/>}
       {filteredComments.map((comment) => {
-        console.log("comment", comment)
         return (<Comment {...comment} key={comment._id} />);
       })}
 
