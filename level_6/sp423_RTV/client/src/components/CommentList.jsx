@@ -11,8 +11,6 @@ export default function CommentList(props) {
     setToggle(prev => !prev)
   }
 
-  console.log("Comment list", issue_Id)
-
   return (
     <div>
       <button onClick={displayCommentForm}>Add Comment</button>

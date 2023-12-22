@@ -122,6 +122,24 @@ export default function UserProvider(props) {
       });
   }
   
+  function upVoteIssue(issueId) {
+    return userAxios.put(`/api/issue/upVote/${issueId}`)
+        .then(res => {
+            // setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
+            setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
+        })
+        .catch(err => console.log(err))
+  }
+
+  function downVoteIssue(issueId) {
+    return userAxios.put(`/api/issue/downVote/${issueId}`)
+        .then(res => {
+            // setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ?  issue : res.data))
+            setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
+        })
+        .catch(err => console.log(err))
+  }
+
   
   return (
     <UserContext.Provider
@@ -136,7 +154,9 @@ export default function UserProvider(props) {
         postNewComment,
         comments,
         setComments,
-        getUserIssues
+        getUserIssues,
+        upVoteIssue,
+        downVoteIssue
       }}
     >
       {props.children}

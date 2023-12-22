@@ -5,10 +5,21 @@ import "../css/issues.css"
 import CommentList from "./CommentList";
 
 export default function Issue(props) {
-  const { comments } = useContext(UserContext);
+  const { comments, upVoteIssue, downVoteIssue } = useContext(UserContext);
   const { _id, likedUsers, dislikedUsers } = props;
 
   const filteredComments = comments.filter(comment => comment.issue === _id);
+
+  function handleUpVote(e, _id) {
+    e.preventDefault();
+    upVoteIssue(_id);
+  }
+  
+  function handleDownVote(e, _id) {
+    e.preventDefault();
+    downVoteIssue(_id);
+  }
+  
 
   return (
     <>
@@ -19,11 +30,11 @@ export default function Issue(props) {
 
         <div className="vote-container">
           <div>
-            <button className="up-vote">Up Vote</button>
+            <button onClick={(e) => handleUpVote(e, _id)} className="up-vote">Up Vote</button>
             <span>Upvotes: {likedUsers.length}</span>
           </div>
           <div>
-            <button className="down-vote">DownVote</button>
+            <button onClick={(e) => handleDownVote(e, _id)} className="down-vote">DownVote</button>
             <span>Downvotes: {dislikedUsers.length}</span>
           </div>
         </div>
