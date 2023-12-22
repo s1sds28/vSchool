@@ -29,40 +29,4 @@ commentRouter.post("/:issueId", (req, res, next) => {
     });
 });
 
-// Post an up vote
-// commentRouter.post("/upvote/:issueId", async (req, res) => {
-//   const issueId = req.params.issueId;
-//   const userId = req.auth._id; // Assuming userId is sent in the request body
-
-//   try {
-//     // Find the comment by ID
-
-//     const comment = await Comment.findById(issueId);
-
-//     if (!comment) {
-//       return res.status(404).json({ message: 'Issue not found' });
-//     }
-
-//     // Check if the user's ID is already in the upVotes array
-//     if (!comment.upVotes.includes(userId)) {
-//       // Add user's ID to the upVotes array
-//       comment.upVotes.push(userId);
-
-//       // Save the updated comment
-//       await comment.save();
-
-//       return res.status(200).json({ message: 'Upvoted successfully' });
-//     }
-
-//     return res.status(400).json({ message: 'User already upvoted this comment' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Internal Server Error' });
-//   }
-// });
-
-
-// Post an down vote
-
-
 module.exports = commentRouter;
