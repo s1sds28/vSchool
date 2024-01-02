@@ -15,7 +15,7 @@ mongoose.connect(
 
 
 app.use('/auth', require('./routes/authRouter.jsx'));
-app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] })); // req.user
+app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] })); // req.auth
 app.use('/api/issue', require('./routes/issueRouter.jsx'))
 app.use('/api/comment', require('./routes/commentRouter.jsx'))
 
