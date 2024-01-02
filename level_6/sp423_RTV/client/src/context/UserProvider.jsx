@@ -15,6 +15,7 @@ export default function UserProvider(props) {
   const initState = {
     user: JSON.parse(localStorage.getItem('user')) || {},
     token: localStorage.getItem('token') || '',
+    allIssues: [],
     issues: [],
     errMsg: ""
   };
@@ -60,7 +61,8 @@ export default function UserProvider(props) {
     setUserState({
       user: {},
       token: "",
-      issues: []
+      issues: [],
+      allIssues: []
     })
   }
 
@@ -78,6 +80,17 @@ export default function UserProvider(props) {
     }))
   }
 
+  function getAllIssues(){
+    userAxios.get("/api/issue/")
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          allIssues: res.data
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+  
   function getUserIssues(){
     userAxios.get("/api/issue/user")
       .then(res => {
@@ -127,7 +140,9 @@ export default function UserProvider(props) {
         .then(res => {
             // setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
             setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
-        })
+            setUserState(prevUserState => ({ ...prevUserState, allIssues: prevUserState.allIssues.map(issue => issueId !== issue._id ? issue : res.data) }))
+
+          })
         .catch(err => console.log(err))
   }
 
@@ -136,6 +151,8 @@ export default function UserProvider(props) {
         .then(res => {
             // setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ?  issue : res.data))
             setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
+            setUserState(prevUserState => ({ ...prevUserState, allIssues: prevUserState.allIssues.map(issue => issueId !== issue._id ? issue : res.data) }))
+
         })
         .catch(err => console.log(err))
   }
@@ -156,7 +173,8 @@ export default function UserProvider(props) {
         setComments,
         getUserIssues,
         upVoteIssue,
-        downVoteIssue
+        downVoteIssue,
+        getAllIssues,
       }}
     >
       {props.children}

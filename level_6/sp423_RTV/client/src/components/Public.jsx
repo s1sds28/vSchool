@@ -1,11 +1,27 @@
-import React from 'react'
-// import TodoList from './TodoList.js'
-// import Todo from './Todo.js'
+import React, { useContext, useEffect } from 'react'
+import IssueList from './IssueList.jsx'
 
-export default function Public(){
+import { UserContext } from '../context/UserProvider.jsx'
+
+export default function Profile(){
+  const { 
+    user: { 
+      username
+    },
+    allIssues,
+    getAllIssues,
+  } = useContext(UserContext)
+
+  useEffect(() => {
+    getAllIssues()
+    }, [])
+
   return (
-    <div className="public">
-      <p>Public page</p>
+    <div className='profile'>
+    <h1>Profile component: Welcome { username }!</h1>
+
+    <h3>All Issues</h3>
+    <IssueList issues={ allIssues }/>
     </div>
   )
 }
