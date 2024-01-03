@@ -5,7 +5,7 @@ import "../css/issues.css"
 import CommentList from "./CommentList";
 
 export default function Issue(props) {
-  const { comments, upVoteIssue, downVoteIssue, editIssue } = useContext(UserContext);
+  const { comments, upVoteIssue, downVoteIssue, editIssue, deleteIssue } = useContext(UserContext);
   const { _id, likedUsers, dislikedUsers, isProfile, title, description } = props;
 
   const [isEditing, setIsEditing] = useState(false)
@@ -38,6 +38,11 @@ export default function Issue(props) {
     e.preventDefault()
     editIssue(_id, formData)
     setIsEditing(false)
+  }
+
+  function handleDeleteIssue(e){
+    e.preventDefault()
+    deleteIssue(_id)
   }
 
   const filteredComments = comments.filter(comment => comment.issue === _id);
@@ -101,7 +106,7 @@ export default function Issue(props) {
     <h1>{props.title}</h1>
     <h3>{props.description}</h3>
     {isProfile && <button onClick={handleEditClick}>Edit</button>}
-
+    {isProfile && <button onClick={handleDeleteIssue}>Delete</button>}
     <div className="vote-container">
       <div>
         <button onClick={(e) => handleUpVote(e, _id)} className="up-vote">Up Vote</button>
