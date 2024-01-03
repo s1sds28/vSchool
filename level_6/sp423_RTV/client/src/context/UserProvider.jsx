@@ -23,7 +23,6 @@ export default function UserProvider(props) {
   const [userState, setUserState] = useState(initState);
   const [comments, setComments] = useState([])
 
-
   function signup(credentials){
     axios.post("/auth/signup", credentials)
       .then(res => {
@@ -38,7 +37,6 @@ export default function UserProvider(props) {
       })
       .catch(err => handleAuthErr(err.response.data.errMsg))
   }
-
 
   function login(credentials){
     axios.post("/auth/login", credentials)
@@ -124,7 +122,6 @@ export default function UserProvider(props) {
       .catch(err => console.log(err.response.data.errMsg));
   }
   
-
   function getAllComments() {
     userAxios.get("/api/comment")
       .then(res => {
@@ -151,7 +148,6 @@ export default function UserProvider(props) {
   function upVoteIssue(issueId) {
     return userAxios.put(`/api/issue/upVote/${issueId}`)
         .then(res => {
-            // setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ? issue : res.data))
             setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
             setUserState(prevUserState => ({ ...prevUserState, allIssues: prevUserState.allIssues.map(issue => issueId !== issue._id ? issue : res.data) }))
 
@@ -162,14 +158,12 @@ export default function UserProvider(props) {
   function downVoteIssue(issueId) {
     return userAxios.put(`/api/issue/downVote/${issueId}`)
         .then(res => {
-            // setAllIssues(prevIssues => prevIssues.map(issue => issueId !== issue._id ?  issue : res.data))
             setUserState(prevUserState => ({ ...prevUserState, issues: prevUserState.issues.map(issue => issueId !== issue._id ? issue : res.data) }))
             setUserState(prevUserState => ({ ...prevUserState, allIssues: prevUserState.allIssues.map(issue => issueId !== issue._id ? issue : res.data) }))
 
         })
         .catch(err => console.log(err))
   }
-
   
   return (
     <UserContext.Provider
