@@ -14,6 +14,8 @@ export default function Profile(){
     getUserIssues,
   } = useContext(UserContext)
 
+  const isProfile = true;
+
   useEffect(() => {
     getUserIssues()
     }, [])
@@ -24,7 +26,7 @@ export default function Profile(){
     <h3>Add an Issue</h3>
     <IssueForm addIssue={addIssue}/>
     <h3>Your Issues</h3>
-    <IssueList issues={ issues }/>
+    <IssueList issues={ issues } isProfile={ isProfile }/>
     </div>
   )
 }
