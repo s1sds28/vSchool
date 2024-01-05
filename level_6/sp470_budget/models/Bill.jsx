@@ -18,9 +18,9 @@ const billSchema = new Schema({
     paymentStatus: {
         type: String
     },
-    billProvider: {
+    account: {
         type: Schema.Types.ObjectId,
-        ref: "AccountProvider",
+        ref: "Account",
         required: true
     }
 })

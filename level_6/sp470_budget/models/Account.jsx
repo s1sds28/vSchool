@@ -21,7 +21,7 @@ const accountSchema = new Schema({
     description: {
         type: String
     },
-    User: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -30,4 +30,4 @@ const accountSchema = new Schema({
     
 })
 
-module.exports = mongoose.model("AccountProvider", accountSchema)
+module.exports = mongoose.model("Account", accountSchema)

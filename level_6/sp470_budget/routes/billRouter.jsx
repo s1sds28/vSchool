@@ -14,4 +14,16 @@ billRouter.get("/", (req, res, next) => {
     });
 });
 
+// Post a Bill
+billRouter.post("/", (req, res, next) => {
+  const newBill = new Bill(req.body)
+  newBill.save((err, savedBill) => {
+    if(err){
+      res.status(500)
+      return next(err)
+    }
+    return res.status(201).send(savedBill)
+  });
+});
+
 module.exports = billRouter;
