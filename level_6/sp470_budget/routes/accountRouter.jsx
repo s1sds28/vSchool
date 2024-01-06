@@ -27,7 +27,6 @@ accountRouter.post("/", (req, res, next) => {
 });
 
 // Delete an account
-// Delete an account
 accountRouter.delete("/:accountId", (req, res, next) => {
   Account.findOneAndDelete(
     { _id: req.params.accountId, user: req.auth._id },
@@ -37,6 +36,22 @@ accountRouter.delete("/:accountId", (req, res, next) => {
         return next(err)
       }
       return res.status(200).send(`Successfully deleted account: ${deletedAccount._id}`)
+    }
+  )
+})
+
+// Update account
+accountRouter.put("/:accountId", (req, res, next) => {
+  Account.findOneAndUpdate(
+    {_id: req.params.accountId, user: req.auth._id },
+    req.body,
+    { new: true },
+    (err, updatedAccount) => {
+      if(err){
+        res.status(500)
+        return next(err)
+      }
+      return res.status(201).send(updatedAccount)
     }
   )
 })
