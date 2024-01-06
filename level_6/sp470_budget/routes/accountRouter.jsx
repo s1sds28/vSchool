@@ -26,4 +26,21 @@ accountRouter.post("/", (req, res, next) => {
   });
 });
 
+// Delete an account
+// Delete an account
+accountRouter.delete("/:accountId", (req, res, next) => {
+  Account.findOneAndDelete(
+    { _id: req.params.accountId, user: req.auth._id },
+    (err, deletedAccount) => {
+      if(err){
+        res.status(500)
+        return next(err)
+      }
+      return res.status(200).send(`Successfully deleted account: ${deletedAccount._id}`)
+    }
+  )
+})
+
+
+
 module.exports = accountRouter;
