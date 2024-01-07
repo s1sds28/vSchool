@@ -26,6 +26,23 @@ accountRouter.post("/", (req, res, next) => {
   });
 });
 
+// Get one account
+accountRouter.get("/:accountId", (req, res, next) => {
+  Account.findById(req.params.accountId, (err, account) => {
+    if (err) {
+      res.status(500);
+      return next(err);
+    }
+
+    if (!account) {
+      res.status(404);
+      return next(new Error(`Account not found with ID: ${req.params.accountId}`));
+    }
+
+    return res.status(200).send(account);
+  });
+});
+
 // Delete an account
 accountRouter.delete("/:accountId", (req, res, next) => {
   Account.findOneAndDelete(
