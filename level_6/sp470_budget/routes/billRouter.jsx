@@ -26,6 +26,21 @@ billRouter.post("/", (req, res, next) => {
   });
 });
 
+// Get One Bill
+billRouter.get("/:billId", (req, res, next) => {
+  Bill.findById(req.params.billId, (err, bill) => {
+    if(err){
+      res.status(500);
+      return next(err);
+    }
+    if(!bill){
+      res.status(404);
+      return next(new Error(`Bill not found with ID: ${req.params.billId}`));
+    }
+    return res.status(200).send(bill);
+  });
+});
+
 // Delete a Bill
 billRouter.delete("/:billId", (req, res, next) => {
   Bill.findOneAndDelete(
@@ -40,6 +55,7 @@ billRouter.delete("/:billId", (req, res, next) => {
   )
 })
 
+// Edit a Bill
 billRouter.put("/:billId", (req, res, next) => {
   Bill.findByIdAndUpdate(
     { _id: req.params.billId, user: req.auth._id },
