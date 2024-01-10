@@ -1,10 +1,13 @@
 import React from "react";
 
+import '../css/account.css'
+
 export default function Account(props) {
+    console.log(props)
   const { _id, company, schedule, paymentMethod, accountNumber, budgetAmount, description } = props;
 
   return (
-    <div>
+    <div className="account">
       <h3>{company}</h3>
       <p>Schedule: {schedule}</p>
       <p>Payment Method: {paymentMethod}</p>
