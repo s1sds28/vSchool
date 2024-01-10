@@ -17,10 +17,6 @@ import { UserContext } from './context/UserProvider.jsx';
 export default function App() {
   const { token, logout } = useContext(UserContext);
 
-  // useEffect(() => {
-  //   getAllComments();
-  // }, []);
-
   return (
     <Router>
       <div className="app">

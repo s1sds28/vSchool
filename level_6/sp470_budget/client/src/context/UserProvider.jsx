@@ -99,11 +99,22 @@ export default function UserProvider(props) {
       handleAuthErr("Failed to fetch user data");
     }
   };
-   
+
+  function addAccount(newAccount){
+    const userId = userState.user._id;
+    userAxios.post("/api/account", newAccount)
+    .then(res => {
+      setUserState(prev => ({
+        ...prev,
+        accounts: [...prev.accounts, res.data]
+      }))
+    })
+  }
+
   useEffect(() => {
     getUserData();
   }, []);
-
+  //I have accounts here
   console.log("User state in useEffect:", userState);
 
   return (
@@ -112,7 +123,8 @@ export default function UserProvider(props) {
         ...userState,
         signup,
         login,
-        logout, 
+        logout,
+        addAccount,
       }}
     >
       {props.children}
