@@ -114,8 +114,7 @@ export default function UserProvider(props) {
   useEffect(() => {
     getUserData();
   }, []);
-  //I have accounts here
-  console.log("User state in useEffect:", userState);
+  // console.log("User state in useEffect:", userState);
 
   return (
     <UserContext.Provider

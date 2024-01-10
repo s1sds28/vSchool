@@ -17,7 +17,7 @@ export default function Profile(){
   } = useContext(UserContext)
 
   // I don't have accounts here
-  console.log("accounts", accounts, 'username', username, "id", _id)
+  // console.log("accounts", accounts, 'username', username, "id", _id)
 
   const [displayAccountForm, setDisplayAccountForm] = useState(false)
   const [displayAccounts, setDisplayAccounts] = useState(false)
