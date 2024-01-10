@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export const UserContext = React.createContext();
@@ -21,7 +21,6 @@ export default function UserProvider(props) {
   };
 
   const [userState, setUserState] = useState(initState);
-//   const [comments, setComments] = useState([])
 
   function signup(credentials){
     axios.post("/auth/signup", credentials)
@@ -39,7 +38,6 @@ export default function UserProvider(props) {
   }
 
   function login(credentials){
-    console.log("trying to login")
     axios.post("/auth/login", credentials)
       .then(res => {
         const { user, token } = res.data
@@ -79,13 +77,45 @@ export default function UserProvider(props) {
     }))
   }
 
+
+  const getUserAccounts = async () => {
+    try {
+      const response = await userAxios.get("/api/account");
+  
+      const userId = userState.user._id;
+      const accounts = response.data.filter(account => account.user === userId);
+      console.log(accounts)
+      
+      setUserState(prevUserState => ({
+        ...prevUserState,
+        accounts
+      }));
+  
+    } catch (error) {
+      handleAuthErr("Failed to fetch user accounts");
+    }
+  };
+  
+
+
+  useEffect(() => {
+    getUserAccounts()
+  }, []);
+
+  console.log("User state in useEffect:", userState);
+
+  
+  
+
+
   return (
     <UserContext.Provider
       value={{
         ...userState,
         signup,
         login,
-        logout
+        logout, 
+
       }}
     >
       {props.children}

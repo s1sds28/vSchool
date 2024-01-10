@@ -22,6 +22,10 @@ const billSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Account",
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 
