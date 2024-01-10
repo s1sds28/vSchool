@@ -77,36 +77,34 @@ export default function UserProvider(props) {
     }))
   }
 
-
-  const getUserAccounts = async () => {
+  const getUserData = async () => {
     try {
-      const response = await userAxios.get("/api/account");
-  
+      const [accountsResponse, billsResponse] = await Promise.all([
+        userAxios.get("/api/account"),
+        userAxios.get("/api/bill")
+      ]);
+      // define userId
       const userId = userState.user._id;
-      const accounts = response.data.filter(account => account.user === userId);
-      console.log(accounts)
-      
+      // filter out for user based on userId
+      const accounts = accountsResponse.data.filter(account => account.user === userId);
+      const bills = billsResponse.data.filter(bill => bill.user === userId);
+      // update state
       setUserState(prevUserState => ({
         ...prevUserState,
-        accounts
+        accounts,
+        bills
       }));
   
     } catch (error) {
-      handleAuthErr("Failed to fetch user accounts");
+      handleAuthErr("Failed to fetch user data");
     }
   };
-  
-
-
+   
   useEffect(() => {
-    getUserAccounts()
+    getUserData();
   }, []);
 
   console.log("User state in useEffect:", userState);
-
-  
-  
-
 
   return (
     <UserContext.Provider
@@ -115,7 +113,6 @@ export default function UserProvider(props) {
         signup,
         login,
         logout, 
-
       }}
     >
       {props.children}

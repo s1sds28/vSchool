@@ -26,8 +26,6 @@ const accountSchema = new Schema({
         ref: "User",
         required: true
     }
-
-    
 })
 
 module.exports = mongoose.model("Account", accountSchema)

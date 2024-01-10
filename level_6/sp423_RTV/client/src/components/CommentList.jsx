@@ -18,7 +18,6 @@ export default function CommentList(props) {
       {filteredComments.map((comment) => {
         return (<Comment {...comment} key={comment._id} />);
       })}
-
     </div>
   );
 }
