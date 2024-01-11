@@ -16,7 +16,7 @@ const accountSchema = new Schema({
         type: String
     },
     budgetAmount: {
-        type: String
+        type: Number
     },
     description: {
         type: String

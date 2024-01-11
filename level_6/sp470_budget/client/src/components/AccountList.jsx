@@ -4,16 +4,14 @@ import Account from "./Account.jsx";
 
 export default function AccountList() {
   const {
-    user: { username },
     updateAccount,
     accounts
   } = useContext(UserContext);
 
-  const sortedAccounts = [...accounts].sort((a, b) => a.budgetAmount - b.budgetAmount);
+  const sortedAccounts = [...accounts].sort((a, b) => b.budgetAmount - a.budgetAmount);
 
   return (
     <div>
-        <p>{username}</p>
         {sortedAccounts.map((account) => (
         <Account updateAccount={updateAccount} {...account} key={account._id} />
       ))}
