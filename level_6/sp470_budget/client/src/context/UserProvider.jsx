@@ -111,6 +111,22 @@ export default function UserProvider(props) {
     })
   }
 
+  function updateAccount(accountId, updatedAccount) {
+    userAxios
+      .put(`/api/account/${accountId}`, updatedAccount)  // Fix: change /api/issue to /api/account
+      .then((res) => {
+        setUserState((prevState) => ({
+          ...prevState,
+          accounts: prevState.accounts.map((account) =>
+            account._id !== accountId ? account : res.data
+          ),
+        }));
+      })
+      .catch((err) => console.log(err.response.data.errMsg));
+  }
+  
+  
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -124,6 +140,7 @@ export default function UserProvider(props) {
         login,
         logout,
         addAccount,
+        updateAccount
       }}
     >
       {props.children}
