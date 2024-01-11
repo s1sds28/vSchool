@@ -4,6 +4,7 @@ import Account from "./Account.jsx";
 
 export default function AccountList() {
   const {
+    deleteAccount,
     updateAccount,
     accounts
   } = useContext(UserContext);
@@ -13,7 +14,7 @@ export default function AccountList() {
   return (
     <div>
         {sortedAccounts.map((account) => (
-        <Account updateAccount={updateAccount} {...account} key={account._id} />
+        <Account deleteAccount={deleteAccount} updateAccount={updateAccount} {...account} key={account._id} />
       ))}
     </div>
   );

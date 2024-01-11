@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 
 import { UserContext } from "../context/UserProvider.jsx";
@@ -8,7 +8,19 @@ import '../css/account.css'
 export default function Account(props) {
 
 
-  const { updateAccount, _id, company, schedule, paymentMethod, accountNumber, budgetAmount, description } = props;
+  const {
+    deleteAccount,
+    updateAccount,
+    _id,
+    company,
+    schedule,
+    paymentMethod,
+    accountNumber,
+    budgetAmount,
+    description
+    } = props;
+
+    const { filterBills } = useContext(UserContext)
 
   const initData = {
     company: company || "",
@@ -37,7 +49,12 @@ export default function Account(props) {
     e.preventDefault()
     setIsEditing(prev => !prev)
     setFormData(initData)
+  }
 
+  function handleDelete(e){
+    e.preventDefault()
+    deleteAccount(_id)
+    setIsEditing(prev => !prev)
   }
 
   function handleSubmit(e){
@@ -46,6 +63,10 @@ export default function Account(props) {
     setIsEditing(prev => !prev)
   }
 
+  function handleDisplayBills(e){
+    e.preventDefault()
+    filterBills(_id)
+  }
   return (
     <>
     {isEditing ? (
@@ -98,15 +119,20 @@ export default function Account(props) {
               onChange={handleInputChange}
             />
           </label>
+          <button onClick={handleDelete}>Delete</button>
+
+
         </form>
-    ):(    
-        <div className="account" onClick={()=> setIsEditing(prev => !prev)}>
+    ):( 
+        <div className="account">
             <h3>{company}</h3>
             <p>Schedule: {schedule}</p>
             <p>Payment Method: {paymentMethod}</p>
             <p>Account Number: {accountNumber}</p>
             <p>Budget Amount: {budgetAmount}</p>
             <p>Description: {description}</p>
+            <button onClick={handleDisplayBills}>Display Bills</button>
+            <button onClick={()=> setIsEditing(prev => !prev)}>Edit</button>
         </div>)}
     </>
 

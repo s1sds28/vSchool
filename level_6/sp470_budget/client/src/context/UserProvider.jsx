@@ -21,6 +21,7 @@ export default function UserProvider(props) {
   };
 
   const [userState, setUserState] = useState(initState);
+  const [filteredBills, setFilteredBills] = useState([])
 
   function signup(credentials){
     axios.post("/auth/signup", credentials)
@@ -125,8 +126,27 @@ export default function UserProvider(props) {
       .catch((err) => console.log(err.response.data.errMsg));
   }
   
+  function deleteAccount(accountId){
+    userAxios.delete(`api/account/${accountId}`)
+    .then(res => {
+      setUserState(prevState => {
+        const updatedAccounts = prevState.accounts.filter(account => account._id !== accountId)
+        return {
+          ...prevState,
+          accounts: updatedAccounts
+        };
+      });
+    })
+    .catch((err) => console.log(err.response.data.errMsg));
+  }
   
+  function filterBills(accountId) {
+    const newBills = userState.bills.filter(bill => bill.account === accountId);
+    console.log(newBills)
+    setFilteredBills(newBills);
+  }
   
+
 
   useEffect(() => {
     getUserData();
@@ -141,7 +161,10 @@ export default function UserProvider(props) {
         login,
         logout,
         addAccount,
-        updateAccount
+        updateAccount,
+        deleteAccount,
+        filterBills,
+        filteredBills,
       }}
     >
       {props.children}
