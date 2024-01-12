@@ -5,9 +5,6 @@ import Bill from "./Bill.jsx";
 
 export default function BillList() {
   const {
-    bills,
-    filterBills,
-    accountNumforBills,
     filteredBills: contextFilteredBills
   } = useContext(UserContext);
 

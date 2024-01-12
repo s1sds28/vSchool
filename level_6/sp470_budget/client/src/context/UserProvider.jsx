@@ -22,7 +22,7 @@ export default function UserProvider(props) {
 
   const [userState, setUserState] = useState(initState);
   const [filteredBills, setFilteredBills] = useState([])
-  const [accountNumforBill, setAccountNumbforBill] =useState(null)
+  const [accountNumforBill, setAccountNumbforBill] = useState(null)
 
   function signup(credentials){
     axios.post("/auth/signup", credentials)
@@ -112,7 +112,6 @@ export default function UserProvider(props) {
       }))
     })
     .catch((err) => console.log(err.response.data.errMsg));
-
   }
 
   function updateAccount(accountId, updatedAccount) {
@@ -150,9 +149,9 @@ export default function UserProvider(props) {
   }
 
   async function addBill(newBill) {
+    // use async function
     try {
       const userId = userState.user._id;
-    
       const res = await userAxios.post("/api/bill", newBill);
     
       setUserState(prev => ({
@@ -166,7 +165,6 @@ export default function UserProvider(props) {
       console.log(err.response.data.errMsg);
     }
   }
-  
   
   return (
     <UserContext.Provider
