@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import { UserContext } from '../context/UserProvider.jsx'
 
+import '../css/addAccountForm.css'
 
 export default function AccountForm(props){
 
@@ -42,53 +43,70 @@ export default function AccountForm(props){
     const { company, schedule, paymentMethod, accountNumber, budgetAmount, description } = inputs
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type='text'
-                name='company'
-                onChange={handleChange}
-                placeholder='company'
-                value={inputs.company}
-                />
-            <input
-                type='text'
-                name='schedule'
-                onChange={handleChange}
-                placeholder='schedule'
-                value={inputs.schedule}
-                />
-            <input
-                type='text'
-                name='paymentMethod'
-                onChange={handleChange}
-                placeholder='paymentMethod'
-                value={inputs.paymentMethod}
-                />
-            <input
-                type='number'
-                name='accountNumber'
-                onChange={handleChange}
-                placeholder='accountNumber'
-                value={inputs.accountNumber}
-                />
-            <input
-                type='number'
-                name='budgetAmount'
-                onChange={handleChange}
-                placeholder='budgetAmount'
-                value={inputs.budgetAmount}
-                />
-            <input
-                type='text'
-                name='description'
-                onChange={handleChange}
-                placeholder='description'
-                value={inputs.description}
-                />
-            <button>Add Account</button>
+        <form className="account" onSubmit={handleSubmit}>
+          <label htmlFor="company">Company:</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            onChange={handleChange}
+            placeholder="Enter company name"
+            value={inputs.company}
+          />
+      
+          <label htmlFor="schedule">Schedule:</label>
+          <input
+            type="text"
+            id="schedule"
+            name="schedule"
+            onChange={handleChange}
+            placeholder="Enter schedule"
+            value={inputs.schedule}
+          />
+      
+          <label htmlFor="paymentMethod">Payment Method:</label>
+          <input
+            type="text"
+            id="paymentMethod"
+            name="paymentMethod"
+            onChange={handleChange}
+            placeholder="Enter payment method"
+            value={inputs.paymentMethod}
+          />
+      
+          <label htmlFor="accountNumber">Account Number:</label>
+          <input
+            type="number"
+            id="accountNumber"
+            name="accountNumber"
+            onChange={handleChange}
+            placeholder="Enter account number"
+            value={inputs.accountNumber}
+          />
+      
+          <label htmlFor="budgetAmount">Budget Amount:</label>
+          <input
+            type="number"
+            id="budgetAmount"
+            name="budgetAmount"
+            onChange={handleChange}
+            placeholder="Enter budget amount"
+            value={inputs.budgetAmount}
+          />
+      
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            onChange={handleChange}
+            placeholder="Enter description"
+            value={inputs.description}
+          />
+      
+          <button>Add Account</button>
         </form>
-    )
-
+      );
 
 
 

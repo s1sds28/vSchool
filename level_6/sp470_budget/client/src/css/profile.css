@@ -1,0 +1,63 @@
+/* profile.css */
+
+.main-profile {
+    text-align: center;
+  }
+  
+  .main-profile > h1 {
+    margin: 8px;
+    font-size: 2em;
+  }
+  
+  .main-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .main-profile > .profile-dropdown {
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 20px;
+    display: inline-block;
+  }
+  
+  .profile-dropdown {
+    position: relative; /* Change to relative to keep the dropdown content within the container */
+  }
+  
+  .main-profile > form {
+    display: block;
+    flex-direction: column;
+    margin: 16px 0;
+    border: 1px solid #3339;
+    background-color: #aaa9;
+    padding: 16px;
+    border-radius: 5px;
+  }
+
+  .main-profile > form {
+    display: block;
+    flex-direction: column;
+    margin: 16px 0;
+    border: 1px solid #3339;
+    background-color: #aaa9;
+    padding: 16px;
+    border-radius: 5px
+  }
+  
+  .profile > form > input,
+  .profile > form > button {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 5px
+  }
+  
+  .main-profile > form > input,
+  .main-profile > form > button {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  
+  /* Add more specific styling for other elements if needed */
+  

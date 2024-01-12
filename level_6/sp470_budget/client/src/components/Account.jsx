@@ -72,53 +72,56 @@ export default function Account(props) {
     {isEditing ? (
         <form className="account" onSubmit={handleSubmit} >
 
+
+          <label htmlFor="company">Company:</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            onChange={handleInputChange}
+            placeholder="Enter company name"
+            value={formData.company}
+          />
+          <label htmlFor="schedule">Schedule:</label>
+          <input
+            type="text"
+            id="schedule"
+            name="schedule"
+            onChange={handleInputChange}
+            placeholder="Enter payment Schedule"
+            value={formData.schedule}
+          />
+
+          <label htmlFor="paymentMethod">Payment Method:</label>
+          <input
+            type="text"
+            id="paymentMethod"
+            name="paymentMethod"
+            onChange={handleInputChange}
+            placeholder="Enter payment method"
+            value={formData.paymentMethod}
+          />
+
+          <label htmlFor="accountNumber">Account Number:</label>
+          <input
+            type="number"
+            id="accountNumber"
+            name="accountNumber"
+            onChange={handleInputChange}
+            placeholder="Enter account number"
+            value={formData.accountNumber}
+          />
+          <label htmlFor="budgetAmount">Budget Amount:</label>
+          <input
+            type="number"
+            id="budgetAmount"
+            name="budgetAmount"
+            onChange={handleInputChange}
+            placeholder="Enter budget amount"
+            value={formData.budgetAmount}
+          />
           <button onClick={handleCancel}>Cancel</button>
           <button type="submit">Submit</button>
-          <label>
-            Company:
-            <input
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Schedule:
-            <input
-              type="text"
-              name="schedule"
-              value={formData.schedule}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Payment Method:
-            <input
-              type="text"
-              name="paymentMethod"
-              value={formData.paymentMethod}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Account Number:
-            <input
-              type="text"
-              name="accountNumber"
-              value={formData.accountNumber}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Budget Amount:
-            <input
-              type="text"
-              name="budgetAmount"
-              value={formData.budgetAmount}
-              onChange={handleInputChange}
-            />
-          </label>
           <button onClick={handleDelete}>Delete</button>
 
 

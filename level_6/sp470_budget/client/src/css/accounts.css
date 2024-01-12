@@ -82,21 +82,3 @@
     text-decoration: underline;
   }
   
-  .profile > form {
-    display: flex;
-    flex-direction: column;
-    margin: 16px 0;
-    border: 1px solid #3339;
-    background-color: #aaa9;
-    padding: 16px;
-    border-radius: 5px
-  }
-  
-  .profile > form > input,
-  .profile > form > button {
-    margin: 8px 0;
-    padding: 8px;
-    border-radius: 5px
-  }
-  
-  

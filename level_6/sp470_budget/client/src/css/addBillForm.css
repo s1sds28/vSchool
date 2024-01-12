@@ -1,0 +1,42 @@
+/* Style for the add-bill container */
+.add-bill {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    border: 1px solid #3339;
+    background-color: #aaa9;
+    padding: 16px;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  /* Style for the title of the add-bill */
+  .add-bill h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for the description of the add-bill */
+  .add-bill h3 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for labels and inputs */
+  .add-bill label {
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .add-bill input {
+    margin-bottom: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    flex-grow: 1;
+    margin-left: 8px; /* Add margin for spacing between label and input */
+  }
+  

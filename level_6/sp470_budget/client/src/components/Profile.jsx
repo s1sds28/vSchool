@@ -5,7 +5,10 @@ import { UserContext } from '../context/UserProvider.jsx'
 import AccountForm from './AccountForm.jsx'
 import AccountList from './AccountList.jsx'
 
+import BillForm from './BillForm.jsx'
 import BillList from './BillList.jsx'
+
+import "../css/profile.css"
 
 export default function Profile(){
   const { 
@@ -25,26 +28,39 @@ export default function Profile(){
   const [displayAccounts, setDisplayAccounts] = useState(false)
   const [displayBills, setDisplayBills] = useState(false)
 
-  return (
-    <>
-      <div className='profile'>
+return (
+  <>
+    <div className='main-profile'>
       <h1>Profile Welcome { username }</h1>
+      <div className='main-container'>
+        <div className='profile-dropdown'>
+          <h3>
+          Add an Account to your budget
+          </h3>
+          {<AccountForm/>}
+        </div>
+        <div className='profile-dropdown'>
+          <h3>
+            Accounts
+          </h3>
+          {<AccountList/>}
+        </div>
 
-      <h3 onClick={() => setDisplayAccountForm(prev => !prev)}>
-        Click here to add an Account to your budget
-      </h3>
-      {displayAccountForm && <AccountForm/>}
-
-      <h3 onClick={() => setDisplayAccounts(prev => !prev)}>
-        Click here to show Acconts in your budget
-      </h3>
-      {displayAccounts && <AccountList/>}
-
-      <h3 onClick={() => setDisplayBills(prev => !prev)}>
-        Click here to show Bills in your budget
-      </h3>
-      {displayBills && <BillList/>}
+                <div className='profile-dropdown'>
+          <h3>
+          Add an Account to your budget
+          </h3>
+          {<BillForm/>}
+        </div>
+        
+        <div className='profile-dropdown'>
+          <h3 onClick={() => setDisplayBills(prev => !prev)}>
+            Bills
+          </h3>
+          {<BillList/>}
+        </div>
       </div>
-    </>
-  )
+    </div>
+  </>
+);
 }
