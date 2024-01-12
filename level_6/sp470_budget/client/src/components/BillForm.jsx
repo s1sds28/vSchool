@@ -38,6 +38,7 @@ export default function AccountForm(props){
 
     function handleSubmit(e){
         e.preventDefault()
+        inputs.account = accountNumforBill
         addBill(inputs)
         setInputs(initInputs)
     }

@@ -111,6 +111,8 @@ export default function UserProvider(props) {
         accounts: [...prev.accounts, res.data]
       }))
     })
+    .catch((err) => console.log(err.response.data.errMsg));
+
   }
 
   function updateAccount(accountId, updatedAccount) {
@@ -147,17 +149,20 @@ export default function UserProvider(props) {
     setFilteredBills(newBills);
   }
 
-  function addBill(newBill){
+  function addBill(newBill) {
     const userId = userState.user._id;
+  
     userAxios.post("/api/bill", newBill)
-    .then(res => {
-      setUserState(prev => ({
-        ...prev,
-        bills: [...prev.bills, res.data]
-      }))
-    })
-    .catch((err) => console.log(err.response.data.errMsg));
+      .then(res => {
+        setUserState(prev => ({
+          ...prev,
+          bills: [...prev.bills, res.data]
+        }));
+        filterBills(newBill.account)
+      })
+      .catch((err) => console.log(err.response.data.errMsg));
   }
+  
   
   return (
     <UserContext.Provider

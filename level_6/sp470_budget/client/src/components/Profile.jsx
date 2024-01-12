@@ -19,7 +19,8 @@ export default function Profile(){
     accounts,
     bills,
     addAccount,
-    getUserData
+    getUserData,
+    accounNumforBill
   } = useContext(UserContext)
 
   useEffect(() => {
