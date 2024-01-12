@@ -16,25 +16,30 @@ export default function AccountForm(props){
 
     const initInputs = {
         issueDate: "",
-        amount: "",
-        isPaid: "",
+        amount: 0,
+        isPaid: false,
         dueDate: "",
         paymentStatus: "",
+        account: accountNumforBill,
+        user: _id
     }
 
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e){
-        const { name, value } = e.target
+        const { name, value, type, checked } = e.target
+
+        const inputValue = type === 'checkbox' ? checked : value;
         setInputs(prev => ({
             ...prev,
-            [name]: value
+            [name]: inputValue
         }));
     }
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log("submit")
+        addBill(inputs)
+        setInputs(initInputs)
     }
 
     const hasAccount = accountNumforBill !== null ? true : false;
@@ -60,6 +65,14 @@ export default function AccountForm(props){
               onChange={handleChange}
               placeholder=""
               checked={inputs.isPaid}
+            />
+            <label htmlFor='issueDate'>Issue Date</label>
+            <input
+              type='date'
+              name='issueDate'
+              onChange={handleChange}
+              placeholder=""
+              value={inputs.issueDate}
             />
             <label htmlFor='dueDate'>Due Date</label>
             <input

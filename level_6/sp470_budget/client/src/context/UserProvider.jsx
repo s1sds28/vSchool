@@ -148,7 +148,7 @@ export default function UserProvider(props) {
   }
 
   function addBill(newBill){
-    constuserId = userState.user._id;
+    const userId = userState.user._id;
     userAxios.post("/api/bill", newBill)
     .then(res => {
       setUserState(prev => ({
@@ -156,6 +156,7 @@ export default function UserProvider(props) {
         bills: [...prev.bills, res.data]
       }))
     })
+    .catch((err) => console.log(err.response.data.errMsg));
   }
   
   return (
