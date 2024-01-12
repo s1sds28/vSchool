@@ -20,7 +20,6 @@ export default function Bill(props) {
     _id,
     } = props;
 
-    const displayBills = account ? true : false;
   return (
         <div className="account">
             <h3>Bill</h3>

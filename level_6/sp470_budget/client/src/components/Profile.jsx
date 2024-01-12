@@ -26,9 +26,6 @@ export default function Profile(){
     getUserData();
   }, []);
 
-  // I don't have accounts here
-  // console.log("accounts", accounts, 'username', username, "id", _id)
-
   const [displayAccountForm, setDisplayAccountForm] = useState(false)
   const [displayAccounts, setDisplayAccounts] = useState(false)
   const [displayBills, setDisplayBills] = useState(false)
@@ -50,16 +47,14 @@ return (
           </h3>
           {<AccountList/>}
         </div>
-
-                <div className='profile-dropdown'>
+        <div className='profile-dropdown'>
           <h3>
-          Add a Bill to an Account
+            Add a Bill to an Account
           </h3>
           {<BillForm/>}
         </div>
-        
         <div className='profile-dropdown'>
-          <h3 onClick={() => setDisplayBills(prev => !prev)}>
+          <h3>
             Bills
           </h3>
           {<BillList/>}

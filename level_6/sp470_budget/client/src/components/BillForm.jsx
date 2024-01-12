@@ -39,14 +39,12 @@ export default function AccountForm(props){
 
     const hasAccount = accountNumforBill !== null ? true : false;
 
-
-    console.log(hasAccount)
-
     const { issueDate, amount, isPaid, dueDate, paymentStatus } = inputs
 
     return (
         hasAccount ? (
           <form className='add-bill' onSubmit={handleSubmit}>
+            <h3>Account {accountNumforBill}</h3>
             <label htmlFor='amount'>Amount</label>
             <input
               type='number'

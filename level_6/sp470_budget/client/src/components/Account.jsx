@@ -129,6 +129,7 @@ export default function Account(props) {
     ):( 
         <div className="account">
             <h3>{company}</h3>
+            <p>Account _id: {_id}</p>
             <p>Schedule: {schedule}</p>
             <p>Payment Method: {paymentMethod}</p>
             <p>Account Number: {accountNumber}</p>

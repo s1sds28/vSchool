@@ -158,8 +158,6 @@ export default function UserProvider(props) {
     })
   }
   
-  console.log(filteredBills)
-
   return (
     <UserContext.Provider
       value={{
