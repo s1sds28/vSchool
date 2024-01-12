@@ -13,14 +13,9 @@ import "../css/profile.css"
 export default function Profile(){
   const { 
     user: {
-      _id,
       username
     },
-    accounts,
-    bills,
-    addAccount,
     getUserData,
-    accounNumforBill
   } = useContext(UserContext)
 
   useEffect(() => {

@@ -117,7 +117,7 @@ export default function UserProvider(props) {
 
   function updateAccount(accountId, updatedAccount) {
     userAxios
-      .put(`/api/account/${accountId}`, updatedAccount)  // Fix: change /api/issue to /api/account
+      .put(`/api/account/${accountId}`, updatedAccount)
       .then((res) => {
         setUserState((prevState) => ({
           ...prevState,
@@ -149,18 +149,22 @@ export default function UserProvider(props) {
     setFilteredBills(newBills);
   }
 
-  function addBill(newBill) {
-    const userId = userState.user._id;
-  
-    userAxios.post("/api/bill", newBill)
-      .then(res => {
-        setUserState(prev => ({
-          ...prev,
-          bills: [...prev.bills, res.data]
-        }));
-        filterBills(newBill.account)
-      })
-      .catch((err) => console.log(err.response.data.errMsg));
+  async function addBill(newBill) {
+    try {
+      const userId = userState.user._id;
+    
+      const res = await userAxios.post("/api/bill", newBill);
+    
+      setUserState(prev => ({
+        ...prev,
+        bills: [...prev.bills, res.data]
+      }));
+
+      setFilteredBills(prev => [...prev, res.data])
+
+    } catch (err) {
+      console.log(err.response.data.errMsg);
+    }
   }
   
   
