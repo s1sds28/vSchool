@@ -9,7 +9,9 @@ export default function AccountForm(props){
         user: {
           _id
         },
-        addAccount
+        filteredBills,
+        addBill,
+        accountNumforBill,
       } = useContext(UserContext)
 
     const initInputs = {
@@ -35,48 +37,57 @@ export default function AccountForm(props){
         console.log("submit")
     }
 
+    const hasAccount = accountNumforBill !== null ? true : false;
+
+
+    console.log(hasAccount)
 
     const { issueDate, amount, isPaid, dueDate, paymentStatus } = inputs
 
     return (
-        <form className='add-bill' onSubmit={handleSubmit}>
-
+        hasAccount ? (
+          <form className='add-bill' onSubmit={handleSubmit}>
             <label htmlFor='amount'>Amount</label>
             <input
-                type='number'
-                name='amount'
-                onChange={handleChange}
-                placeholder=""
-                value={inputs.amount}
-                />
+              type='number'
+              name='amount'
+              onChange={handleChange}
+              placeholder=""
+              value={inputs.amount}
+            />
             <label htmlFor='isPaid'>Paid</label>
             <input
-                type='checkbox'
-                name='isPaid'
-                onChange={handleChange}
-                placeholder=""
-                value={inputs.isPaid ? 1 : 0}
+              type='checkbox'
+              name='isPaid'
+              onChange={handleChange}
+              placeholder=""
+              checked={inputs.isPaid}
             />
             <label htmlFor='dueDate'>Due Date</label>
-
             <input
-                type='date'
-                name='dueDate'
-                onChange={handleChange}
-                placeholder=""
-                value={inputs.dueDate}
+              type='date'
+              name='dueDate'
+              onChange={handleChange}
+              placeholder=""
+              value={inputs.dueDate}
             />
-                        <label htmlFor='paymentStatus'>Payment Status</label>
+            <label htmlFor='paymentStatus'>Payment Status</label>
             <input
-                type='text'
-                name='paymentStatus'
-                onChange={handleChange}
-                placeholder='Payment Status'
-                value={inputs.paymentStatus}
-                />
+              type='text'
+              name='paymentStatus'
+              onChange={handleChange}
+              placeholder='Payment Status'
+              value={inputs.paymentStatus}
+            />
             <button type='submit'>Add Bill</button>
-        </form>
-    )
+          </form>
+        ) : (
+          <div className='add-bill'>
+            <p>Display bills on an Account to add a bill</p>
+          </div>
+        )
+      );
+      
 
 
 }

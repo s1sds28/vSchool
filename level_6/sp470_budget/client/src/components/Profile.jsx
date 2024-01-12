@@ -18,8 +18,13 @@ export default function Profile(){
     },
     accounts,
     bills,
-    addAccount
+    addAccount,
+    getUserData
   } = useContext(UserContext)
+
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   // I don't have accounts here
   // console.log("accounts", accounts, 'username', username, "id", _id)
@@ -31,7 +36,7 @@ export default function Profile(){
 return (
   <>
     <div className='main-profile'>
-      <h1>Profile Welcome { username }</h1>
+      <h1>Welcome { username }</h1>
       <div className='main-container'>
         <div className='profile-dropdown'>
           <h3>
@@ -48,7 +53,7 @@ return (
 
                 <div className='profile-dropdown'>
           <h3>
-          Add an Account to your budget
+          Add a Bill to an Account
           </h3>
           {<BillForm/>}
         </div>

@@ -22,6 +22,7 @@ export default function UserProvider(props) {
 
   const [userState, setUserState] = useState(initState);
   const [filteredBills, setFilteredBills] = useState([])
+  const [accountNumforBill, setAccountNumbforBill] =useState(null)
 
   function signup(credentials){
     axios.post("/auth/signup", credentials)
@@ -142,16 +143,22 @@ export default function UserProvider(props) {
   
   function filterBills(accountId) {
     const newBills = userState.bills.filter(bill => bill.account === accountId);
-    console.log(newBills)
+    setAccountNumbforBill(accountId)
     setFilteredBills(newBills);
   }
+
+  function addBill(newBill){
+    constuserId = userState.user._id;
+    userAxios.post("/api/bill", newBill)
+    .then(res => {
+      setUserState(prev => ({
+        ...prev,
+        bills: [...prev.bills, res.data]
+      }))
+    })
+  }
   
-
-
-  useEffect(() => {
-    getUserData();
-  }, []);
-  // console.log("User state in useEffect:", userState);
+  console.log(filteredBills)
 
   return (
     <UserContext.Provider
@@ -163,8 +170,11 @@ export default function UserProvider(props) {
         addAccount,
         updateAccount,
         deleteAccount,
+        addBill,
         filterBills,
         filteredBills,
+        getUserData,
+        accountNumforBill,
       }}
     >
       {props.children}

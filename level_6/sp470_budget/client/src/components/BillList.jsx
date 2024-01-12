@@ -15,15 +15,15 @@ export default function BillList() {
 
   return (
     <>
-    {sortedFilteredBills.length !==0 ? (    
+    {sortedFilteredBills.length !== 0 ? (    
     <div>
       {sortedFilteredBills.map((bill) => (
         <Bill {...bill} key={bill._id} />
       ))}
     </div>
     ):(
-    <div>
-      <Bill account="EXAMPLE"/>
+    <div className="add-bill">
+      <p>Display bills on an Account to show bills</p>
     </div>
     )}
 

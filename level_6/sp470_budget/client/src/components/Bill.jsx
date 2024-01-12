@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 
 import { UserContext } from "../context/UserProvider.jsx";
@@ -8,7 +8,8 @@ import '../css/account.css'
 export default function Bill(props) {
 
 
-  const { 
+  const {
+    text,
     issueDate,
     amount, 
     isPaid,
@@ -19,7 +20,7 @@ export default function Bill(props) {
     _id,
     } = props;
 
-
+    const displayBills = account ? true : false;
   return (
         <div className="account">
             <h3>Bill</h3>
