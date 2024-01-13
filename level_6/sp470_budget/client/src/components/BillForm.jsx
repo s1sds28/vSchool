@@ -74,6 +74,7 @@ export default function AccountForm(props){
               onChange={handleChange}
               placeholder=""
               value={inputs.issueDate}
+              required
             />
             <label htmlFor='dueDate'>Due Date</label>
             <input
@@ -82,6 +83,7 @@ export default function AccountForm(props){
               onChange={handleChange}
               placeholder=""
               value={inputs.dueDate}
+              required
             />
             <label htmlFor='paymentStatus'>Payment Status</label>
             <input
