@@ -50,7 +50,7 @@ billRouter.delete("/:billId", (req, res, next) => {
         res.status(500)
         return next(err)
       }
-      return res.status(200).send(`Successfully deleted bill ${deletedBill._id}`)
+      return res.status(200).send(`${deletedBill._id}`)
     }
   )
 })

@@ -30,6 +30,8 @@ export default function Bill(props) {
     _id: _id
   }
 
+  const { deleteBill, updateBill } = useContext(UserContext)
+
   const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState(initData)
 
@@ -51,17 +53,13 @@ export default function Bill(props) {
 
   function handleDelete(e){
     e.preventDefault()
-    console.log("handleDelete")
+    deleteBill(_id)
   }
 
   function handleSubmit(e){
     e.preventDefault()
-    console.log("handleSubmit")
-  }
-
-  function handleDisplayBills(e){
-    e.preventDefault()
-    console.log("handleDisplayBills")
+    updateBill(_id, formData)
+    setIsEditing(prev => !prev)
   }
 
   const originalIssueDate = new Date(formData.issueDate);
@@ -74,6 +72,16 @@ export default function Bill(props) {
     <>
     {isEditing ? (
       <form className="account" onSubmit={handleSubmit} >
+          <label htmlFor="paymentStatus">paymentStatus</label>
+          <input
+            type="text"
+            id="paymentStatus"
+            name="paymentStatus"
+            onChange={handleInputChange}
+
+            placeholder="Payment Status"
+            value={formData.paymentStatus}
+          />
         <label htmlFor="issueDate">Issue Date</label>
           <input
             type="date"

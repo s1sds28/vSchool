@@ -165,6 +165,35 @@ export default function UserProvider(props) {
       console.log(err.response.data.errMsg);
     }
   }
+
+  function deleteBill(billId){
+    userAxios.delete(`api/bill/${billId}`)
+    .then(res => {
+      setUserState(prevState => {
+        const updatedBills = prevState.bills.filter(bill => bill._id !== billId)
+        return {
+          ...prevState,
+          bills: updatedBills
+        };
+      });
+      setFilteredBills(prev => prev.filter(bill => bill._id !== billId))
+    })
+    .catch((err) => console.log(err.response.data.errMsg));
+  }
+
+  function updateBill(billId, updatedBill){
+    console.log(billId, updatedBill)
+    userAxios.put(`/api/bill/${billId}`, updatedBill)
+    .then((res) => {
+      const updatedBills = userState.bills.map(bill => billId !== bill._id ? bill : res.data)
+      setUserState((prevState) => ({
+        ...prevState,
+        bills: updatedBills
+      }))
+      setFilteredBills(prev => prev.map(bill => bill._id !== billId ? bill : res.data))
+
+    })
+  }
   
   return (
     <UserContext.Provider
@@ -177,6 +206,8 @@ export default function UserProvider(props) {
         updateAccount,
         deleteAccount,
         addBill,
+        deleteBill,
+        updateBill,
         filterBills,
         filteredBills,
         getUserData,
