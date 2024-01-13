@@ -37,7 +37,6 @@ export default function AccountForm(props){
         e.preventDefault()
         addAccount(inputs)
         setInputs(initInputs)
-
     }
 
     const { company, schedule, paymentMethod, accountNumber, budgetAmount, description } = inputs
@@ -55,14 +54,19 @@ export default function AccountForm(props){
           />
       
           <label htmlFor="schedule">Schedule:</label>
-          <input
+          <select
             type="text"
             id="schedule"
             name="schedule"
             onChange={handleChange}
             placeholder="Enter schedule"
             value={inputs.schedule}
-          />
+            >
+            <option value="N/A">N/A</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Semi-annual">Semi-annual</option>
+            <option value="Yearly">Yearly</option>
+          </select>
       
           <label htmlFor="paymentMethod">Payment Method:</label>
           <input

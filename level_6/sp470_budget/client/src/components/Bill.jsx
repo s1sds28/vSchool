@@ -72,16 +72,17 @@ export default function Bill(props) {
     <>
     {isEditing ? (
       <form className="account" onSubmit={handleSubmit} >
-          <label htmlFor="paymentStatus">paymentStatus</label>
-          <input
-            type="text"
+      <label htmlFor="paymentStatus">Payment Status</label>
+          <select
             id="paymentStatus"
             name="paymentStatus"
             onChange={handleInputChange}
-
-            placeholder="Payment Status"
             value={formData.paymentStatus}
-          />
+          >
+            <option value="N/A">N/A</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+          </select>
         <label htmlFor="issueDate">Issue Date</label>
           <input
             type="date"
@@ -106,8 +107,7 @@ export default function Bill(props) {
             id="isPaid"
             name="isPaid"
             onChange={handleInputChange}
-            placeholder={formData.isPaid.toString()}
-            value={formData.isPaid}
+            checked={formData.isPaid}
           />
           <label htmlFor="dueDate">Due Date</label>
           <input
@@ -118,34 +118,6 @@ export default function Bill(props) {
             placeholder={formData.dueDate}
             value={formattedDueDate}
           />
-          <label htmlFor="account">Account</label>
-          <input
-            type="text"
-            id="account"
-            name="account"
-            placeholder="account"
-            value={formData.account}
-            readOnly
-          />
-          <label htmlFor="user">user</label>
-          <input
-            type="text"
-            id="user"
-            name="user"
-            placeholder="user"
-            value={formData.user}
-            readOnly
-          />
-          <label htmlFor="_id">_id</label>
-          <input
-            type="text"
-            id="_id"
-            name="_id"
-            placeholder="_id"
-            value={formData._id}
-            readOnly
-          />
-
           <button onClick={handleCancel}>Cancel</button>
           <button type="submit">Submit</button>
           <button onClick={handleDelete}>Delete</button>
@@ -154,14 +126,11 @@ export default function Bill(props) {
     ):(
       <div className="account">
         <h3>Bill</h3>
-        <p>account: {account}</p>
+        <p>issue Data: {formattedIssueDate}</p>
         <p>isPaid: {isPaid.toString()}</p>
+        <p>dueDate: {formattedDueDate}</p>
         <p>paymentStatus: {paymentStatus}</p>
-        <p>user: {user}</p>
-        <p>issue Data: {issueDate}</p>
         <p>amount: {amount}</p>
-        <p>dueDate: {dueDate}</p>
-        <p>_id: {_id}</p>
         <button onClick={()=> setIsEditing(prev => !prev)}>Edit</button>
       </div>
     )}

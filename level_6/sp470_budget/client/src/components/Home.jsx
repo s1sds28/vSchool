@@ -5,14 +5,14 @@ import { UserContext } from '../context/UserProvider.jsx'
 export default function Home(){
   const { 
     user: { 
-      username
+      username,
+      accounts,
+      bills
     },
 
   } = useContext(UserContext)
 
-  // useEffect(() => {
-  //   getAllIssues()
-  //   }, [])
+
 
   return (
     <>
