@@ -14,27 +14,31 @@ export default function Home(){
     getUserData();
   }, []);
 
+  const costPerMonth = accounts.reduce((sum, account) => {
+    return sum += account.budgetAmount
+  }, 0)
 
-  
+  const eachMonth = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+
   const [userData, setUserData] = useState({
-    labels:[
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ],
+    labels: eachMonth,
     datasets: [
       {
-        label: "Monthly Budget",
-        data: [5,5,5,5,5,5,5,5,5,5,5,5],
+        label: "Costs per Month",
+        data: eachMonth.map(()=> costPerMonth/12),
 
       },
     ],

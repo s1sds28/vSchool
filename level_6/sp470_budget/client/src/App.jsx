@@ -22,7 +22,6 @@ export default function App() {
       <div className="app">
         {token && <Navbar logout={logout} />}
         <Routes>
-          <Route path='/home' element={ <Home /> }/>
           <Route path="/" element={token ? <Navigate to="/profile" /> : <Auth />} />
           <Route
             path="/profile"
@@ -40,6 +39,13 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path='/home'
+            element={
+              <ProtectedRoute token={token} redirectTo="/">
+                <Home />
+              </ProtectedRoute>
+            }/>
         </Routes>
       </div>
     </Router>
