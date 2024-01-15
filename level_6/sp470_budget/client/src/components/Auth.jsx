@@ -30,7 +30,7 @@ export default function Auth(){
 
   return (
     <div className="auth-container">
-      <h1>Issue App</h1>
+      <h1>Budget App</h1>
       { !toggle ?
         <>
           <AuthForm 

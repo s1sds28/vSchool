@@ -29,7 +29,7 @@ export default function Profile(){
 return (
   <>
     <div className='main-profile'>
-      <h1>Welcome { username }</h1>
+      <h1>Welcome: { username }</h1>
       <div className='main-container'>
         <div className='profile-dropdown'>
           <h3>

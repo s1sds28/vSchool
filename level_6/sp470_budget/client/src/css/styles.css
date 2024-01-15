@@ -8,18 +8,6 @@
     text-decoration: none;
   }
   
-  .app {
-    background-color: #eee9;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 40px;
-    background-color: #3339;
-  }
-  
   .auth-container {
     display: flex;
     align-items: center;
@@ -57,11 +45,6 @@
     margin: 16px 8px;
     padding: 8px;
     border-radius: 4px;
-  }
-  
-  
-  .public {
-    height: 100vh;
   }
   
   .profile {
