@@ -54,7 +54,8 @@ export default function Home(){
       <BarChart chartData={userData}/>
     </div>
     <div style={{ justifyContent: 'center', textAlign: 'center', marginTop: '20px' }}>
-      To be continued... a report: A years breakdown of when bill are due similar to a cash flow statement
+      <p>To be continued... report: A personal cash flow statement to show budget vs spending</p>
+
     </div>
   </>
 }
